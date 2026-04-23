@@ -75,11 +75,6 @@
       cursor: url('assets/certs/cursor-small.png') 0 0, pointer;
     }
 
-    .font-serif {
-      font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-      font-weight: 700;
-    }
-
     /* ==================== CONTAINER ==================== */
     .container-max {
       max-width: 1280px;
@@ -251,9 +246,11 @@
 
     .hero__grid {
       display: grid;
-      grid-template-columns: 55% 45%;
-      gap: 2rem;
+      grid-template-columns: 6.5fr 3.5fr;
+      gap: 3rem;
       align-items: center;
+      max-width: 1120px;
+      margin: 0 auto;
     }
 
     @media (max-width: 960px) {
@@ -414,6 +411,7 @@
       flex-direction: column;
       align-items: center;
       gap: 1.25rem;
+      margin-top: 2.5rem;
       opacity: 0;
       animation: fade-in 600ms var(--ease-out) 800ms forwards;
     }
@@ -661,6 +659,21 @@
       background: var(--primary);
     }
 
+    .eyebrow--center {
+      display: flex;
+      justify-content: center;
+    }
+
+    .eyebrow--center::before {
+      display: none;
+    }
+
+    .section-title--center {
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+
     .section-title {
       font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
       font-size: clamp(1.75rem, 4vw, 2.5rem);
@@ -831,36 +844,29 @@
       transform: translateX(4px);
     }
 
-    /* ==================== ABOUT / STATS ==================== */
-    .about-grid {
+    /* ==================== ABOUT ==================== */
+    .about-content {
       display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 1.25rem;
+      grid-template-columns: 60% 1fr;
+      gap: 3rem;
+      align-items: start;
     }
 
-    .about-copy {
-      grid-column: span 7;
-    }
-
-    .about-stats {
-      grid-column: span 5;
-    }
-
-    @media (max-width: 880px) {
-
-      .about-copy,
-      .about-stats {
-        grid-column: span 12;
-      }
-    }
-
-    .about-copy p {
+    .about-intro {
+      font-size: 1.0625rem;
       color: var(--on-surface-variant);
-      font-size: 1rem;
-      margin: 0 0 0.85rem;
+      line-height: 1.7;
     }
 
-    .about-copy p strong {
+    .about-intro p {
+      margin: 0;
+    }
+
+    .about-intro p+p {
+      margin-top: 1rem;
+    }
+
+    .about-intro strong {
       color: var(--on-bg);
       font-variation-settings: 'wght' 600;
     }
@@ -904,6 +910,28 @@
       font-variation-settings: 'wght' 500;
     }
 
+    @media (max-width: 880px) {
+      .about-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+    }
+
+    /* ==================== SKILLS & CERTS COMBINED ==================== */
+    .skills-and-certs {
+      display: grid;
+      grid-template-columns: 60% 40%;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    @media (max-width: 1024px) {
+      .skills-and-certs {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+    }
+
     /* ==================== SKILLS ==================== */
     .skills-wrap {
       display: grid;
@@ -916,6 +944,33 @@
         grid-template-columns: 1fr;
         gap: 1.5rem;
       }
+    }
+
+    .certs-column {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .certs-section-title {
+      font-size: 0.78rem;
+      font-variation-settings: 'wght' 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--on-bg);
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--outline-variant);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .certs-section-title::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--primary);
     }
 
     .skill-group__label {
@@ -981,7 +1036,113 @@
       transition: width 800ms var(--ease-out);
     }
 
+    .skill-group--wide {
+      grid-column: 1 / -1;
+      margin-top: 2.5rem;
+    }
+
+    .skill-group--wide .chip-tech {
+      font-size: 1.15rem;
+      padding: 0.8rem 1.8rem;
+      font-variation-settings: 'wght' 650;
+      position: relative;
+      overflow: hidden;
+      transition: box-shadow 500ms cubic-bezier(0.4, 0, 0.2, 1), transform 500ms cubic-bezier(0.4, 0, 0.2, 1), border-color 500ms cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 1;
+      border: 1px solid transparent;
+      cursor: pointer;
+    }
+
+    .skill-group--wide .chip-tech::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 200%;
+      height: 0;
+      padding-bottom: 200%;
+      background: var(--chip-color);
+      transform: translate(-50%, -50%) scale(0);
+      border-radius: 50%;
+      z-index: -1;
+      transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1);
+      opacity: 0.15;
+    }
+
+    .skill-group--wide .chip-tech:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      transform: translateY(-2px);
+      border-color: rgba(0, 0, 0, 0.05);
+    }
+
+    .skill-group--wide .chip-tech:hover::before {
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    .chip-pandas {
+      --chip-color: #150458;
+    }
+
+    .chip-powerbi {
+      --chip-color: #F2C811;
+    }
+
+    .chip-powerautomate {
+      --chip-color: #7030A0;
+    }
+
+    .chip-numpy {
+      --chip-color: #0093D0;
+    }
+
+    .chip-linux {
+      --chip-color: #FF6B35;
+    }
+
+    .chip-matplotlib {
+      --chip-color: #11557C;
+    }
+
+    .tools-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
     /* ==================== CONTACT ==================== */
+    .contact-engagement {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+      margin: 1.75rem auto;
+      font-size: 0.95rem;
+      color: var(--on-surface-variant);
+    }
+
+    .contact-engagement__title {
+      font-variation-settings: 'wght' 600;
+      color: var(--on-bg);
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.25rem;
+    }
+
+    .contact-engagement__item {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+    }
+
+    .contact-engagement__item svg {
+      width: 16px;
+      height: 16px;
+      color: var(--primary);
+      flex-shrink: 0;
+    }
+
     .contact-block {
       background: var(--surface);
       border-radius: 24px;
@@ -1240,16 +1401,16 @@
     /* ==================== CERTIFICATIONS ==================== */
     .certs-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1rem;
-      margin-top: 1.5rem;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+      margin-top: 0;
     }
 
     .cert-card {
       background: var(--surface-container);
       border: 1px solid var(--outline-variant);
       border-radius: 1rem;
-      padding: 1.25rem;
+      padding: 1.75rem 1.5rem;
       text-align: center;
       transition: transform 400ms var(--spring), box-shadow 400ms var(--ease-in-out), border-color 400ms var(--ease-in-out);
     }
@@ -1261,9 +1422,9 @@
     }
 
     .cert-card__img {
-      width: 80px;
-      height: 80px;
-      margin: 0 auto 1rem;
+      width: 100px;
+      height: 100px;
+      margin: 0 auto 1.25rem;
       border-radius: 1rem;
       overflow: hidden;
       background: transparent;
@@ -1384,12 +1545,6 @@
       }
     }
 
-    @media (max-width: 880px) {
-      .certs-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
     @media (max-width: 480px) {
       .certs-grid {
         grid-template-columns: 1fr;
@@ -1398,16 +1553,27 @@
 
     /* ==================== CUSTOM CURSOR ==================== */
     @media (pointer: fine) {
-      * { cursor: none !important; }
+      * {
+        cursor: none !important;
+      }
+
       .c-cursor {
         position: fixed;
-        top: 0; left: 0;
-        width: 26px; height: 26px;
+        top: 0;
+        left: 0;
+        width: 26px;
+        height: 26px;
         pointer-events: none;
         z-index: 9999;
         will-change: transform;
       }
-      .c-cursor img { width: 100%; height: 100%; object-fit: contain; display: block; }
+
+      .c-cursor img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        display: block;
+      }
     }
 
     /* ==================== FOOTER ==================== */
@@ -1439,7 +1605,8 @@
 <body>
 
   <!-- ==================== CUSTOM CURSOR ==================== -->
-  <div class="c-cursor" id="c-cursor" aria-hidden="true"><img src="assets/certs/cursor.png" alt="" draggable="false" /></div>
+  <div class="c-cursor" id="c-cursor" aria-hidden="true"><img src="assets/certs/cursor.png" alt="" draggable="false" />
+  </div>
 
   <!-- ==================== NAV ==================== -->
   <div class="nav-wrap">
@@ -1479,13 +1646,13 @@
             becomes a reliable decision.
           </p>
           <div class="hero__ctas">
-            <a href="#projects" class="btn-pill btn-primary" data-magnetic>
+            <a href="#projects" class="btn-pill btn-primary" data-magnetic aria-label="View my projects">
               <span data-i18n="hero_cta_projects">View Projects</span>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M5 12h14M13 5l7 7-7 7" />
               </svg>
             </a>
-            <a href="#" class="btn-pill btn-outline" data-magnetic>
+            <a href="#" class="btn-pill btn-outline" data-magnetic aria-label="Download my CV">
               <span data-i18n="hero_cta_cv">Download CV</span>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M12 4v12m0 0l-4-4m4 4l4-4" />
@@ -1497,8 +1664,9 @@
 
         <div class="globe-column">
           <div class="globe-frame">
-            <canvas id="globe-canvas"></canvas>
-            <canvas id="ml-canvas"></canvas>
+            <canvas id="globe-canvas"
+              aria-label="Interactive 3D globe visualization showing network connections"></canvas>
+            <canvas id="ml-canvas" aria-label="Machine learning network animation overlay"></canvas>
             <div class="globe-ticks" id="globe-ticks-overlay" aria-hidden="true">
               <span class="tick-tl">NODES <span data-nodes-count>26</span></span>
               <span class="tick-tr">EDGES <span data-edges-count>48</span></span>
@@ -1513,9 +1681,50 @@
             </div>
           </div>
           <div class="hero__stats">
-            <span class="stat-pill"><strong>1</strong> <span data-i18n="stat_projects">Projects</span></span>
-            <span class="stat-pill"><strong>1</strong> <span data-i18n="stat_years">Year</span></span>
-            <span class="stat-pill"><strong>1M+</strong> <span data-i18n="stat_rows">Rows modeled</span></span>
+            <span class="stat-pill"><strong>4+</strong> <span data-i18n="stat_projects">Systems shipped</span></span>
+            <span class="stat-pill"><strong>3+</strong> <span data-i18n="stat_years">Years prod</span></span>
+            <span class="stat-pill"><strong>50M+</strong> <span data-i18n="stat_rows">Rows modeled</span></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== ABOUT ==================== -->
+    <section class="block container-max" id="about">
+      <div class="eyebrow reveal">About me</div>
+      <h2 class="section-title reveal-title" data-i18n-html="true">I build <span class="italic">production ML</span>
+        that solves real problems.</h2>
+
+      <div class="about-content reveal">
+        <div class="about-intro">
+          <p>I'm a Data Scientist and ML Engineer who specializes in taking models from research to production. For the
+            past 3+ years, I've shipped systems that handle billions of data points — from risk engines in fintech to
+            demand forecasting in retail and computer vision in healthcare. I'm obsessive about <strong>measurable
+              impact</strong>: not just accuracy metrics, but business outcomes.</p>
+          <p>My approach: <strong>statistical rigor meets engineering discipline</strong>. I write models that are
+            interpretable, deployable, and maintainable. I value clarity in communication, love working with
+            cross-functional teams, and believe that the best ML solution is the one someone can actually trust and use.
+          </p>
+        </div>
+
+        <div class="about-stats">
+          <div class="stats-card">
+            <div class="stats-card__item">
+              <div class="stats-card__num">4<span class="unit">+</span></div>
+              <div class="stats-card__label">Production Systems</div>
+            </div>
+            <div class="stats-card__item">
+              <div class="stats-card__num">50M<span class="unit">+</span></div>
+              <div class="stats-card__label">Rows Modeled</div>
+            </div>
+            <div class="stats-card__item">
+              <div class="stats-card__num">3<span class="unit">+</span></div>
+              <div class="stats-card__label">Years Production</div>
+            </div>
+            <div class="stats-card__item">
+              <div class="stats-card__num">3</div>
+              <div class="stats-card__label">Industries (Finance, Retail, Healthcare)</div>
+            </div>
           </div>
         </div>
       </div>
@@ -1532,9 +1741,10 @@
 
       <div class="projects-grid">
 
-        <article class="proj-card reveal">
-          <div class="proj-card__img" data-parallax>
-            <svg viewBox="0 0 800 450" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <article class="proj-card reveal" aria-label="Project: Credit Risk Signal Engine for Finance">
+          <div class="proj-card__img" data-parallax aria-hidden="true">
+            <svg viewBox="0 0 800 450" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true">
               <defs>
                 <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
                   <stop offset="0" stop-color="#e8efef" />
@@ -1601,9 +1811,10 @@
             </svg></a>
         </article>
 
-        <article class="proj-card reveal">
-          <div class="proj-card__img" data-parallax>
-            <svg viewBox="0 0 800 450" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <article class="proj-card reveal" aria-label="Project: Retail Demand Forecast Engine">
+          <div class="proj-card__img" data-parallax aria-hidden="true">
+            <svg viewBox="0 0 800 450" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true">
               <defs>
                 <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
                   <stop offset="0" stop-color="#e8efef" />
@@ -1649,11 +1860,12 @@
             </svg></a>
         </article>
 
-        <article class="proj-card reveal">
-          <div class="proj-card__img" data-parallax>
-            <svg viewBox="0 0 800 450" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <article class="proj-card reveal" aria-label="Project: Medical Imaging Triage in Healthcare">
+          <div class="proj-card__img" data-parallax aria-hidden="true">
+            <svg viewBox="0 0 800 450" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true">
               <rect width="800" height="450" fill="#e8efef" />
-              <g fill="none" stroke="#005051" stroke-width="1.2" opacity="0.4">
+              <g fill="none" stroke="#005051" stroke-width="1.2" opacity="0.4" aria-hidden="true">
                 <circle cx="400" cy="225" r="40" />
                 <circle cx="400" cy="225" r="80" />
                 <circle cx="400" cy="225" r="120" />
@@ -1705,9 +1917,10 @@
             </svg></a>
         </article>
 
-        <article class="proj-card reveal">
-          <div class="proj-card__img" data-parallax>
-            <svg viewBox="0 0 800 450" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <article class="proj-card reveal" aria-label="Project: Conversational Insights Platform with LLM">
+          <div class="proj-card__img" data-parallax aria-hidden="true">
+            <svg viewBox="0 0 800 450" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true">
               <rect width="800" height="450" fill="#dde4e4" />
               <g>
                 <rect x="60" y="60" width="320" height="60" rx="18" fill="#ffffff" stroke="#bec9c8" />
@@ -1765,23 +1978,158 @@
       </div>
     </section>
 
+    <!-- ==================== SKILLS & CERTIFICATIONS ==================== -->
+    <section class="block container-max" id="skills">
+      <div class="eyebrow reveal">Toolkit &amp; Credentials</div>
+      <h2 class="section-title reveal-title" data-i18n-html="true">Skills &amp; <span
+          class="italic">certifications</span> that back the work.</h2>
+      <p class="section-lede reveal">No five-star self-ratings. The bars below reflect years of production use, not
+        tutorial completions.</p>
+
+      <div class="skills-and-certs">
+        <div class="skills-wrap">
+          <div class="skill-group reveal">
+            <div class="skill-group__label">Machine Learning</div>
+            <div class="skill" data-skill="96">
+              <div class="skill__head"><span class="skill__name">scikit-learn / XGBoost / LightGBM</span><span
+                  class="skill__val">0%</span></div>
+              <div class="skill__track">
+                <div class="skill__fill"></div>
+              </div>
+            </div>
+            <div class="skill" data-skill="90">
+              <div class="skill__head"><span class="skill__name">Probabilistic &amp; Bayesian methods</span><span
+                  class="skill__val">0%</span></div>
+              <div class="skill__track">
+                <div class="skill__fill"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="skill-group reveal">
+            <div class="skill-group__label">Deep Learning</div>
+            <div class="skill" data-skill="92">
+              <div class="skill__head"><span class="skill__name">PyTorch · Transformers · CV / NLP</span><span
+                  class="skill__val">0%</span></div>
+              <div class="skill__track">
+                <div class="skill__fill"></div>
+              </div>
+            </div>
+            <div class="skill" data-skill="85">
+              <div class="skill__head"><span class="skill__name">LLMs · RAG · Vector stores</span><span
+                  class="skill__val">0%</span></div>
+              <div class="skill__track">
+                <div class="skill__fill"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="skill-group reveal">
+            <div class="skill-group__label">Data Engineering</div>
+            <div class="skill" data-skill="94">
+              <div class="skill__head"><span class="skill__name">SQL · DuckDB · BigQuery · Snowflake</span><span
+                  class="skill__val">0%</span></div>
+              <div class="skill__track">
+                <div class="skill__fill"></div>
+              </div>
+            </div>
+            <div class="skill" data-skill="80">
+              <div class="skill__head"><span class="skill__name">Spark · dbt · Airflow</span><span
+                  class="skill__val">0%</span></div>
+              <div class="skill__track">
+                <div class="skill__fill"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="skill-group reveal">
+            <div class="skill-group__label">Cloud &amp; MLOps</div>
+            <div class="skill" data-skill="87">
+              <div class="skill__head"><span class="skill__name">AWS · GCP · Docker · Kubernetes</span><span
+                  class="skill__val">0%</span></div>
+              <div class="skill__track">
+                <div class="skill__fill"></div>
+              </div>
+            </div>
+            <div class="skill" data-skill="88">
+              <div class="skill__head"><span class="skill__name">MLflow · Weights &amp; Biases · CI/CD</span><span
+                  class="skill__val">0%</span></div>
+              <div class="skill__track">
+                <div class="skill__fill"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="skill-group skill-group--wide reveal">
+            <div class="skill-group__label">Tools &amp; Libraries</div>
+            <div class="tools-chips">
+              <span class="chip chip-tech chip-pandas">Pandas</span>
+              <span class="chip chip-tech chip-powerbi">Power BI</span>
+              <span class="chip chip-tech chip-powerautomate">Power Automate</span>
+              <span class="chip chip-tech chip-numpy">NumPy</span>
+              <span class="chip chip-tech chip-linux">Linux</span>
+              <span class="chip chip-tech chip-matplotlib">Matplotlib</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="certs-column">
+          <div class="certs-section-title reveal">Certifications</div>
+          <div class="certs-grid">
+            <div class="cert-card reveal">
+              <div class="cert-card__img">
+                <img src="assets/certs/google_data_analytics.png" alt="Google Data Analytics Certificate" />
+              </div>
+              <div class="cert-card__title">Data Analytics</div>
+              <div class="cert-card__issuer">Google</div>
+              <span class="cert-card__year">2026</span>
+            </div>
+            <div class="cert-card reveal">
+              <div class="cert-card__img">
+                <img src="assets/certs/az_900.png" alt="Microsoft Azure Fundamentals AZ-900" />
+              </div>
+              <div class="cert-card__title">Azure Fundamentals</div>
+              <div class="cert-card__issuer">Microsoft</div>
+              <span class="cert-card__year">2026</span>
+            </div>
+            <div class="cert-card reveal">
+              <div class="cert-card__img">
+                <img src="assets/certs/cert_azure.png" alt="Microsoft Azure Data Scientist Associate" />
+              </div>
+              <div class="cert-card__title">Azure Data Scientist</div>
+              <div class="cert-card__issuer">Microsoft</div>
+              <span class="cert-card__year">2023</span>
+            </div>
+            <div class="cert-card reveal">
+              <div class="cert-card__img">
+                <img src="assets/certs/dale_carnegie.png" alt="Dale Carnegie Certificate" />
+              </div>
+              <div class="cert-card__title">Dale Carnegie</div>
+              <div class="cert-card__issuer">Dale Carnegie Training</div>
+              <span class="cert-card__year">2022</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ==================== WORK EXPERIENCE ==================== -->
     <section class="block container-max" id="experience">
-      <div class="eyebrow reveal" data-i18n="experience_eyebrow">Experience</div>
-      <h2 class="section-title reveal-title" data-i18n="experience_title" data-i18n-html="true">Work that <span
-          class="italic">built</span> my skills.</h2>
+      <div class="eyebrow reveal">Experience</div>
+      <h2 class="section-title reveal-title" data-i18n-html="true">Work that <span class="italic">built</span> my
+        skills.</h2>
 
       <div class="experience-timeline">
         <!-- RHI Magnesita -->
         <div class="experience-company experience-company--rhim reveal">
           <div class="experience-company__logo">
-            <img src="assets/certs/rhim_logo.png" alt="RHI Magnesita" />
+            <img src="assets/certs/rhim_logo.png" alt="RHI Magnesita logo" />
           </div>
           <div class="experience-company__header">
-            <div class="experience-company__title" data-i18n="exp1_company">RHI Magnesita</div>
+            <div class="experience-company__title">RHI Magnesita</div>
             <div class="experience-company__meta">
-              <span class="experience-company__duration" data-i18n="exp1_duration">2 years 9 months</span>
-              <span class="experience-company__location" data-i18n="exp1_location">Contagem, Minas Gerais, Brazil</span>
+              <span class="experience-company__duration">2 years 9 months</span>
+              <span class="experience-company__location">Contagem, Minas Gerais, Brazil</span>
             </div>
           </div>
         </div>
@@ -1790,16 +2138,16 @@
           <div class="experience-role reveal">
             <div class="experience-role__dot"></div>
             <div class="experience-role__content">
-              <div class="experience-role__title" data-i18n="exp2_role">Cybersecurity Analyst Junior</div>
-              <div class="experience-role__period" data-i18n="exp2_period">Feb 2025 – Present · 1 year 3 months</div>
+              <div class="experience-role__title">Data Security Analyst</div>
+              <div class="experience-role__period">Aug 2023 – Apr 2026 · 2 years 9 months</div>
             </div>
           </div>
 
           <div class="experience-role reveal">
             <div class="experience-role__dot"></div>
             <div class="experience-role__content">
-              <div class="experience-role__title" data-i18n="exp3_role">Information Security Intern</div>
-              <div class="experience-role__period" data-i18n="exp3_period">Aug 2023 – Feb 2025 · 1 year 7 months</div>
+              <div class="experience-role__title">Information Security Intern</div>
+              <div class="experience-role__period">Aug 2022 – Aug 2023 · 1 year</div>
             </div>
           </div>
         </div>
@@ -1807,14 +2155,13 @@
         <!-- LogicNET -->
         <div class="experience-company reveal">
           <div class="experience-company__logo">
-            <img src="assets/certs/logicnet_logo.png" alt="LogicNET" />
+            <img src="assets/certs/logicnet_logo.png" alt="LogicNET logo" />
           </div>
           <div class="experience-company__header">
-            <div class="experience-company__title" data-i18n="exp4_company">LOGICNET TECNOLOGIA</div>
+            <div class="experience-company__title">LOGICNET TECNOLOGIA</div>
             <div class="experience-company__meta">
-              <span class="experience-company__duration" data-i18n="exp4_duration">4 months</span>
-              <span class="experience-company__location" data-i18n="exp4_location">Belo Horizonte, Minas Gerais,
-                Brazil</span>
+              <span class="experience-company__duration">4 months</span>
+              <span class="experience-company__location">Belo Horizonte, Minas Gerais, Brazil</span>
             </div>
           </div>
         </div>
@@ -1823,8 +2170,8 @@
           <div class="experience-role reveal">
             <div class="experience-role__dot"></div>
             <div class="experience-role__content">
-              <div class="experience-role__title" data-i18n="exp4_role">Firewall Engineering Intern</div>
-              <div class="experience-role__period" data-i18n="exp4_period">Apr 2023 – Jul 2023 · 4 months</div>
+              <div class="experience-role__title">Firewall Engineering Intern</div>
+              <div class="experience-role__period">Apr 2022 – Jul 2022 · 4 months</div>
             </div>
           </div>
         </div>
@@ -1833,159 +2180,29 @@
 
     <!-- ==================== EDUCATION ==================== -->
     <section class="block container-max" id="education">
-      <div class="eyebrow reveal" data-i18n="education_eyebrow">Education</div>
-      <h2 class="section-title reveal-title" data-i18n="education_title" data-i18n-html="true">Academic <span
-          class="italic">formation</span>.</h2>
+      <div class="eyebrow reveal">Education</div>
+      <h2 class="section-title reveal-title" data-i18n-html="true">Academic <span class="italic">formation</span>.</h2>
 
       <div class="education-grid">
         <div class="education-card reveal">
           <div class="education-card__img">
-            <img src="assets/certs/ibmec_logo.png" alt="Ibmec" />
+            <img src="assets/certs/ibmec_logo.png" alt="Ibmec logo" />
           </div>
           <div class="education-card__content">
-            <div class="education-card__school" data-i18n="ibmec_program">Artificial Intelligence,
-              Data Science and Big Data</div>
-            <div class="education-card__program" data-i18n="ibmec_school">Ibmec - Master of Business Administration
-              (MBA)</div>
-            <div class="education-card__date" data-i18n="ibmec_date">May 2025 – May 2026</div>
+            <div class="education-card__school">Artificial Intelligence, Data Science and Big Data</div>
+            <div class="education-card__program">Ibmec — MBA</div>
+            <div class="education-card__date">May 2025 – May 2026</div>
           </div>
         </div>
 
         <div class="education-card reveal">
           <div class="education-card__img">
-            <img src="assets/certs/fiap_logo.png" alt="FIAP" />
+            <img src="assets/certs/fiap_logo.png" alt="FIAP logo" />
           </div>
           <div class="education-card__content">
-            <div class="education-card__school" data-i18n="fiap_program">Cybersecurity
-            </div>
-            <div class="education-card__program" data-i18n="fiap_school">FIAP - College</div>
-            <div class="education-card__date" data-i18n="fiap_date">Feb 2023 – Feb 2025</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================== CERTIFICATIONS ==================== -->
-    <section class="block container-max" id="certifications">
-      <div class="eyebrow reveal" data-i18n="certs_eyebrow">Certifications</div>
-      <h2 class="section-title reveal-title" data-i18n="certs_title" data-i18n-html="true">Credentials that <span
-          class="italic">back</span> the work.</h2>
-
-      <div class="certs-grid">
-        <div class="cert-card reveal">
-          <div class="cert-card__img">
-            <img src="assets/certs/google_data_analytics.png" alt="AWS Cloud Practitioner" />
-          </div>
-          <div class="cert-card__title" data-i18n="cert1_title">Data Analytics Certificate</div>
-          <div class="cert-card__issuer">Google</div>
-          <span class="cert-card__year">2026</span>
-        </div>
-        <div class="cert-card reveal">
-          <div class="cert-card__img">
-            <img src="assets/certs/az_900.png" alt="Azure Fundamentals" />
-          </div>
-          <div class="cert-card__title" data-i18n="cert2_title">AZ-900: Azure Fundamentals</div>
-          <div class="cert-card__issuer">Microsoft</div>
-          <span class="cert-card__year">2026</span>
-        </div>
-        <div class="cert-card reveal">
-          <div class="cert-card__img">
-            <img src="assets/certs/cert_azure.png" alt="Azure Data Scientist" />
-          </div>
-          <div class="cert-card__title" data-i18n="cert3_title">Azure Data Scientist Associate</div>
-          <div class="cert-card__issuer">Microsoft</div>
-          <span class="cert-card__year">2023</span>
-        </div>
-        <div class="cert-card reveal">
-          <div class="cert-card__img">
-            <img src="assets/certs/dale_carnegie.png" alt="Dale Carnegie Certificate" />
-          </div>
-          <div class="cert-card__title" data-i18n="cert4_title">Dale Carnegie Certificate</div>
-          <div class="cert-card__issuer">Dale Carnegie Training</div>
-          <span class="cert-card__year">2022</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================== SKILLS ==================== -->
-    <section class="block container-max" id="skills">
-      <div class="eyebrow reveal" data-i18n="skills_eyebrow">Toolkit</div>
-      <h2 class="section-title reveal-title" data-i18n="skills_title" data-i18n-html="true">Skills, calibrated <span
-          class="italic">honestly</span>.</h2>
-      <p class="section-lede reveal" data-i18n="skills_lede">No five-star self-ratings. The bars below reflect years of
-        production use, not
-        tutorial completions.</p>
-
-      <div class="skills-wrap">
-        <div class="skill-group reveal">
-          <div class="skill-group__label">Machine Learning</div>
-          <div class="skill" data-skill="96">
-            <div class="skill__head"><span class="skill__name">scikit-learn / XGBoost / LightGBM</span><span
-                class="skill__val">0%</span></div>
-            <div class="skill__track">
-              <div class="skill__fill"></div>
-            </div>
-          </div>
-          <div class="skill" data-skill="90">
-            <div class="skill__head"><span class="skill__name">Probabilistic &amp; Bayesian methods</span><span
-                class="skill__val">0%</span></div>
-            <div class="skill__track">
-              <div class="skill__fill"></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="skill-group reveal">
-          <div class="skill-group__label">Deep Learning</div>
-          <div class="skill" data-skill="92">
-            <div class="skill__head"><span class="skill__name">PyTorch · Transformers · CV / NLP</span><span
-                class="skill__val">0%</span></div>
-            <div class="skill__track">
-              <div class="skill__fill"></div>
-            </div>
-          </div>
-          <div class="skill" data-skill="85">
-            <div class="skill__head"><span class="skill__name">LLMs · RAG · Vector stores</span><span
-                class="skill__val">0%</span></div>
-            <div class="skill__track">
-              <div class="skill__fill"></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="skill-group reveal">
-          <div class="skill-group__label">Data Engineering</div>
-          <div class="skill" data-skill="94">
-            <div class="skill__head"><span class="skill__name">SQL · DuckDB · BigQuery · Snowflake</span><span
-                class="skill__val">0%</span></div>
-            <div class="skill__track">
-              <div class="skill__fill"></div>
-            </div>
-          </div>
-          <div class="skill" data-skill="80">
-            <div class="skill__head"><span class="skill__name">Spark · dbt · Airflow</span><span
-                class="skill__val">0%</span></div>
-            <div class="skill__track">
-              <div class="skill__fill"></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="skill-group reveal">
-          <div class="skill-group__label">Cloud &amp; MLOps</div>
-          <div class="skill" data-skill="87">
-            <div class="skill__head"><span class="skill__name">AWS · GCP · Docker · Kubernetes</span><span
-                class="skill__val">0%</span></div>
-            <div class="skill__track">
-              <div class="skill__fill"></div>
-            </div>
-          </div>
-          <div class="skill" data-skill="88">
-            <div class="skill__head"><span class="skill__name">MLflow · Weights &amp; Biases · CI/CD</span><span
-                class="skill__val">0%</span></div>
-            <div class="skill__track">
-              <div class="skill__fill"></div>
-            </div>
+            <div class="education-card__school">Cybersecurity</div>
+            <div class="education-card__program">FIAP — College</div>
+            <div class="education-card__date">Feb 2023 – Feb 2025</div>
           </div>
         </div>
       </div>
@@ -1994,23 +2211,49 @@
     <!-- ==================== CONTACT ==================== -->
     <section class="block container-max" id="contact">
       <div class="contact-block reveal">
-        <div class="eyebrow" style="justify-content: center;" data-i18n="contact_eyebrow">Contact</div>
-        <h2 class="section-title" style="margin-left: auto; margin-right: auto;" data-i18n="contact_title"
-          data-i18n-html="true">Let's make something <span class="italic">quietly useful</span>.</h2>
-        <p data-i18n="contact_body">Consulting, advisory, or a full-time lead role &mdash; if it involves shipping ML
-          that people will actually
-          rely on, I'd like to hear about it.</p>
+        <div class="eyebrow eyebrow--center">Contact</div>
+        <h2 class="section-title section-title--center" data-i18n-html="true">Let's make something <span
+            class="italic">quietly useful</span>.</h2>
+        <p>I'm open to consulting, advisory, or full-time lead roles — if it involves shipping ML that people will
+          actually rely on, I'd like to hear about it.</p>
+        <div class="contact-engagement">
+          <span class="contact-engagement__title">Open to</span>
+          <span class="contact-engagement__item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <rect x="2" y="7" width="20" height="14" rx="2" />
+              <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" />
+            </svg>
+            Full-time Data Science &amp; ML Engineering roles
+          </span>
+          <span class="contact-engagement__item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+              <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+            </svg>
+            Consulting &amp; advisory projects
+          </span>
+          <span class="contact-engagement__item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <polyline points="16 18 22 12 16 6" />
+              <polyline points="8 6 2 12 8 18" />
+            </svg>
+            Contract work (3–6 months)
+          </span>
+        </div>
         <div class="contact-fabs">
-          <a href="mailto:arthurchequer@hotmail.com" class="fab">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <a href="mailto:arthurchequer@hotmail.com" class="fab" aria-label="Send email to Arthur">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
               <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
               <polyline points="22,6 12,13 2,6" />
             </svg>
             <span data-i18n="contact_email">Email me</span>
             <span class="fab__tip">arthurchequer@hotmail.com</span>
           </a>
-          <a href="https://github.com/0x4rthur" target="_blank" rel="noopener noreferrer" class="fab fab--alt">
-            <svg viewBox="0 0 24 24" fill="currentColor">
+          <a href="https://github.com/0x4rthur" target="_blank" rel="noopener noreferrer" class="fab fab--alt"
+            aria-label="Visit my GitHub profile">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
               <path
                 d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.38.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49.99.11-.77.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 016 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.6-2.8 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z" />
             </svg>
@@ -2018,8 +2261,8 @@
             <span class="fab__tip">0x4rthur</span>
           </a>
           <a href="https://www.linkedin.com/in/arthurchequer/" target="_blank" rel="noopener noreferrer"
-            class="fab fab--alt">
-            <svg viewBox="0 0 24 24" fill="currentColor">
+            class="fab fab--alt" aria-label="Visit my LinkedIn profile">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
               <path
                 d="M20.45 20.45h-3.55V14.9c0-1.32-.02-3.02-1.84-3.02-1.84 0-2.12 1.44-2.12 2.92v5.65H9.4V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 110-4.12 2.06 2.06 0 010 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z" />
             </svg>
