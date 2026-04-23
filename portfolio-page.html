@@ -1396,6 +1396,20 @@
       }
     }
 
+    /* ==================== CUSTOM CURSOR ==================== */
+    @media (pointer: fine) {
+      * { cursor: none !important; }
+      .c-cursor {
+        position: fixed;
+        top: 0; left: 0;
+        width: 26px; height: 26px;
+        pointer-events: none;
+        z-index: 9999;
+        will-change: transform;
+      }
+      .c-cursor img { width: 100%; height: 100%; object-fit: contain; display: block; }
+    }
+
     /* ==================== FOOTER ==================== */
     footer {
       padding: 2rem 0 1.5rem;
@@ -1423,6 +1437,9 @@
 </head>
 
 <body>
+
+  <!-- ==================== CUSTOM CURSOR ==================== -->
+  <div class="c-cursor" id="c-cursor" aria-hidden="true"><img src="assets/certs/cursor.png" alt="" draggable="false" /></div>
 
   <!-- ==================== NAV ==================== -->
   <div class="nav-wrap">
@@ -3490,6 +3507,19 @@
       requestAnimationFrame(tick);
     })();
 
+    /* ==================== CUSTOM CURSOR ==================== */
+    (function initCursor() {
+      if (!window.matchMedia('(pointer: fine)').matches) return;
+      const cursorEl = document.getElementById('c-cursor');
+      if (!cursorEl) return;
+
+      window.addEventListener('mousemove', e => {
+        cursorEl.style.transform = `translate(${e.clientX}px,${e.clientY}px)`;
+      }, { passive: true });
+
+      document.addEventListener('mouseleave', () => { cursorEl.style.opacity = '0'; });
+      document.addEventListener('mouseenter', () => { cursorEl.style.opacity = '1'; });
+    })();
 
   </script>
 </body>
