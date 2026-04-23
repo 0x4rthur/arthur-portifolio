@@ -1146,6 +1146,165 @@
       transform: translateX(-50%) translateY(0) scale(1);
     }
 
+    /* ==================== WORK EXPERIENCE ==================== */
+    .experience-timeline {
+      margin-top: 1.5rem;
+    }
+
+    .experience-company {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      margin-bottom: 2rem;
+      padding: 1rem;
+      background: var(--surface-container);
+      border: 1px solid var(--outline-variant);
+      border-radius: 1rem;
+      transition: transform 400ms var(--spring), box-shadow 400ms var(--ease-in-out), border-color 400ms var(--ease-in-out);
+    }
+
+    .experience-company:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px -6px rgba(0, 80, 81, 0.1);
+      border-color: var(--primary-container);
+    }
+
+    .experience-company__logo {
+      width: 80px;
+      height: 80px;
+      min-width: 80px;
+      border-radius: 0.75rem;
+      overflow: hidden;
+      background: var(--surface-container);
+      border: 1px solid var(--outline-variant);
+    }
+
+    .experience-company__logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 0.5rem;
+    }
+
+    .experience-company--rhim .experience-company__logo img {
+      object-fit: cover;
+      padding: 0;
+    }
+
+    .experience-company__header {
+      flex: 1;
+    }
+
+    .experience-company__title {
+      font-size: 1rem;
+      font-variation-settings: 'wght' 600;
+      color: var(--on-bg);
+      margin-bottom: 0.3rem;
+    }
+
+    .experience-company__meta {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+
+    .experience-company__duration,
+    .experience-company__location {
+      font-size: 0.8rem;
+      color: var(--on-surface-variant);
+    }
+
+    .experience-roles {
+      margin-left: 2rem;
+      margin-bottom: 2rem;
+      position: relative;
+      padding-left: 0;
+    }
+
+    .experience-roles::before {
+      content: '';
+      position: absolute;
+      left: -1rem;
+      top: -1.5rem;
+      bottom: 0;
+      width: 1px;
+      background: var(--outline-variant);
+    }
+
+    .experience-role {
+      margin-bottom: 1rem;
+      position: relative;
+      display: flex;
+      gap: 1rem;
+    }
+
+    .experience-role__dot {
+      position: absolute;
+      left: calc(-1rem - 4.5px);
+      top: 50%;
+      transform: translateY(-50%);
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--primary);
+      border: 2px solid var(--bg);
+      box-shadow: 0 0 0 1px var(--outline-variant);
+      flex-shrink: 0;
+    }
+
+    .experience-role__content {
+      flex: 1;
+      padding: 0.75rem;
+      background: var(--surface-container);
+      border: 1px solid var(--outline-variant);
+      border-radius: 0.75rem;
+      transition: transform 400ms var(--spring), box-shadow 400ms var(--ease-in-out), border-color 400ms var(--ease-in-out);
+    }
+
+    .experience-role__content:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 16px -6px rgba(0, 80, 81, 0.1);
+      border-color: var(--primary-container);
+    }
+
+    .experience-role__title {
+      font-size: 0.9rem;
+      font-variation-settings: 'wght' 600;
+      color: var(--on-bg);
+      margin-bottom: 0.3rem;
+      line-height: 1.3;
+    }
+
+    .experience-role__period {
+      font-size: 0.75rem;
+      color: var(--on-surface-variant);
+      line-height: 1.3;
+    }
+
+    @media (max-width: 880px) {
+      .experience-company {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .experience-company__logo {
+        width: 70px;
+        height: 70px;
+      }
+
+      .experience-company__header {
+        text-align: center;
+      }
+
+      .experience-roles {
+        margin-left: 1.5rem;
+      }
+
+      .experience-role__content {
+        padding: 0.875rem;
+      }
+    }
+
     /* ==================== CERTIFICATIONS ==================== */
     .certs-grid {
       display: grid;
@@ -1208,6 +1367,89 @@
       padding: 0.2rem 0.6rem;
       border-radius: 100px;
       letter-spacing: 0.03em;
+    }
+
+    /* ==================== EDUCATION ==================== */
+    .education-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .education-card {
+      background: var(--surface-container);
+      border: 1px solid var(--outline-variant);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      transition: transform 400ms var(--spring), box-shadow 400ms var(--ease-in-out), border-color 400ms var(--ease-in-out);
+      display: flex;
+      gap: 1.25rem;
+      align-items: center;
+    }
+
+    .education-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 32px -8px rgba(0, 80, 81, 0.12);
+      border-color: var(--primary-container);
+    }
+
+    .education-card__img {
+      width: 70px;
+      height: 70px;
+      min-width: 70px;
+      border-radius: 0.75rem;
+      overflow: hidden;
+      background: transparent;
+    }
+
+    .education-card__img img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .education-card__content {
+      flex: 1;
+    }
+
+    .education-card__school {
+      font-size: 1rem;
+      font-variation-settings: 'wght' 600;
+      color: var(--on-bg);
+      margin-bottom: 0.35rem;
+    }
+
+    .education-card__program {
+      font-size: 0.9rem;
+      color: var(--on-surface-variant);
+      margin-bottom: 0.5rem;
+      line-height: 1.4;
+    }
+
+    .education-card__date {
+      font-size: 0.8rem;
+      color: var(--on-surface-variant);
+      margin-bottom: 0.6rem;
+    }
+
+    .education-card__skills {
+      font-size: 0.8rem;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .education-card__skills svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    @media (max-width: 880px) {
+      .education-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (max-width: 880px) {
@@ -1579,51 +1821,102 @@
       </div>
     </section>
 
-    <!-- ==================== ABOUT / STATS ==================== -->
-    <section class="block container-max" id="about">
-      <div class="eyebrow reveal" data-i18n="about_eyebrow">About</div>
-      <h2 class="section-title reveal-title" data-i18n="about_title" data-i18n-html="true">I ship models that <span
-          class="italic">earn</span> their runtime.</h2>
+    <!-- ==================== WORK EXPERIENCE ==================== -->
+    <section class="block container-max" id="experience">
+      <div class="eyebrow reveal" data-i18n="experience_eyebrow">Experience</div>
+      <h2 class="section-title reveal-title" data-i18n="experience_title" data-i18n-html="true">Work that <span
+          class="italic">built</span> my skills.</h2>
 
-      <div class="about-grid">
-        <div class="about-copy">
-          <p class="reveal" data-i18n="about_p1" data-i18n-html="true">I'm Arthur — a <strong>senior data
-              scientist</strong> with five years of experience turning
-            messy operational data into decisions my stakeholders can defend in front of a CFO.</p>
-          <p class="reveal" data-i18n="about_p2">My work sits at the boundary between statistical modeling and systems
-            engineering. I'm
-            comfortable writing Spark pipelines at 3am, and equally comfortable explaining uncertainty intervals to a
-            non-technical board.</p>
-          <p class="reveal" data-i18n="about_p3">Before going in-house, I completed a master's in Computational
-            Statistics at ETH Zürich.
-            Today I lead ML work at a growth-stage fintech, mentor two juniors, and occasionally advise seed-stage AI
-            startups.</p>
-          <p class="reveal" data-i18n="about_p4">Outside work: endurance running, slow coffee, and a quiet obsession
-            with the history of
-            forecasting failures.</p>
-        </div>
-
-        <aside class="about-stats reveal">
-          <div class="stats-card">
-            <div class="stats-card__item">
-              <div class="stats-card__num"><span data-count="42">0</span><span class="unit">+</span></div>
-              <div class="stats-card__label" data-i18n="stat_models">Models in production</div>
-            </div>
-            <div class="stats-card__item">
-              <div class="stats-card__num"><span data-count="5">0</span><span class="unit">y</span></div>
-              <div class="stats-card__label" data-i18n="stat_experience">Years experience</div>
-            </div>
-            <div class="stats-card__item">
-              <div class="stats-card__num"><span data-count="18" data-comma="true">0</span><span class="unit">k</span>
-              </div>
-              <div class="stats-card__label" data-i18n="stat_inferences">Daily inferences</div>
-            </div>
-            <div class="stats-card__item">
-              <div class="stats-card__num"><span data-count="96">0</span><span class="unit">%</span></div>
-              <div class="stats-card__label" data-i18n="stat_uptime">On-call uptime</div>
+      <div class="experience-timeline">
+        <!-- RHI Magnesita -->
+        <div class="experience-company experience-company--rhim reveal">
+          <div class="experience-company__logo">
+            <img src="assets/certs/rhim_logo.png" alt="RHI Magnesita" />
+          </div>
+          <div class="experience-company__header">
+            <div class="experience-company__title" data-i18n="exp1_company">RHI Magnesita</div>
+            <div class="experience-company__meta">
+              <span class="experience-company__duration" data-i18n="exp1_duration">2 years 9 months</span>
+              <span class="experience-company__location" data-i18n="exp1_location">Contagem, Minas Gerais, Brazil</span>
             </div>
           </div>
-        </aside>
+        </div>
+
+        <div class="experience-roles">
+          <div class="experience-role reveal">
+            <div class="experience-role__dot"></div>
+            <div class="experience-role__content">
+              <div class="experience-role__title" data-i18n="exp2_role">Cybersecurity Analyst Junior</div>
+              <div class="experience-role__period" data-i18n="exp2_period">Feb 2025 – Present · 1 year 3 months</div>
+            </div>
+          </div>
+
+          <div class="experience-role reveal">
+            <div class="experience-role__dot"></div>
+            <div class="experience-role__content">
+              <div class="experience-role__title" data-i18n="exp3_role">Information Security Intern</div>
+              <div class="experience-role__period" data-i18n="exp3_period">Aug 2023 – Feb 2025 · 1 year 7 months</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- LogicNET -->
+        <div class="experience-company reveal">
+          <div class="experience-company__logo">
+            <img src="assets/certs/logicnet_logo.png" alt="LogicNET" />
+          </div>
+          <div class="experience-company__header">
+            <div class="experience-company__title" data-i18n="exp4_company">LOGICNET TECNOLOGIA</div>
+            <div class="experience-company__meta">
+              <span class="experience-company__duration" data-i18n="exp4_duration">4 months</span>
+              <span class="experience-company__location" data-i18n="exp4_location">Belo Horizonte, Minas Gerais, Brazil</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="experience-roles">
+          <div class="experience-role reveal">
+            <div class="experience-role__dot"></div>
+            <div class="experience-role__content">
+              <div class="experience-role__title" data-i18n="exp4_role">Firewall Engineering Intern</div>
+              <div class="experience-role__period" data-i18n="exp4_period">Apr 2023 – Jul 2023 · 4 months</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== EDUCATION ==================== -->
+    <section class="block container-max" id="education">
+      <div class="eyebrow reveal" data-i18n="education_eyebrow">Education</div>
+      <h2 class="section-title reveal-title" data-i18n="education_title" data-i18n-html="true">Academic <span
+          class="italic">formation</span>.</h2>
+
+      <div class="education-grid">
+        <div class="education-card reveal">
+          <div class="education-card__img">
+            <img src="assets/certs/ibmec_logo.png" alt="Ibmec" />
+          </div>
+          <div class="education-card__content">
+            <div class="education-card__school" data-i18n="ibmec_program">Artificial Intelligence,
+              Data Science and Big Data</div>
+            <div class="education-card__program" data-i18n="ibmec_school">Ibmec - Master of Business Administration
+              (MBA)</div>
+            <div class="education-card__date" data-i18n="ibmec_date">May 2025 – May 2026</div>
+          </div>
+        </div>
+
+        <div class="education-card reveal">
+          <div class="education-card__img">
+            <img src="assets/certs/fiap_logo.png" alt="FIAP" />
+          </div>
+          <div class="education-card__content">
+            <div class="education-card__school" data-i18n="fiap_program">Cybersecurity
+            </div>
+            <div class="education-card__program" data-i18n="fiap_school">FIAP - College</div>
+            <div class="education-card__date" data-i18n="fiap_date">Feb 2023 – Feb 2025</div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -3330,6 +3623,32 @@
           cert2_title: 'TensorFlow Developer Certificate',
           cert3_title: 'Azure Data Scientist Associate',
           cert4_title: 'Deep Learning Specialization',
+          education_eyebrow: 'Education',
+          education_title: 'Academic <span class="italic">formation</span>.',
+          ibmec_school: 'Ibmec',
+          ibmec_program: 'Master of Business Administration - MBA, IA, Data Science and Big Data',
+          ibmec_date: 'May 2025 – May 2026',
+          ibmec_skills: 'Artificial Intelligence, Data Science and 5 more competencies',
+          fiap_school: 'FIAP',
+          fiap_program: 'Higher Technology Course (CST), Cybersecurity',
+          fiap_date: 'Feb 2023 – Feb 2025',
+          fiap_skills: 'Cybersecurity',
+          experience_eyebrow: 'Experience',
+          experience_title: 'Work that <span class="italic">built</span> my skills.',
+          exp1_company: 'RHI Magnesita',
+          exp1_duration: '2 years 9 months',
+          exp1_location: 'Contagem, Minas Gerais, Brazil',
+          exp2_role: 'Cybersecurity Analyst Junior',
+          exp2_period: 'Feb 2025 – Present · 1 year 3 months',
+          exp2_location: 'Remote',
+          exp3_role: 'Information Security Intern',
+          exp3_period: 'Aug 2023 – Feb 2025 · 1 year 7 months',
+          exp3_location: 'Hybrid',
+          exp4_role: 'Firewall Engineering Intern',
+          exp4_company: 'LOGICNET TECNOLOGIA',
+          exp4_duration: '4 months',
+          exp4_period: 'Apr 2023 – Jul 2023 · 4 months',
+          exp4_location: 'Belo Horizonte, Minas Gerais, Brazil · Hybrid',
         },
         pt: {
           nav_projects: 'Projetos',
@@ -3389,6 +3708,32 @@
           cert2_title: 'Certificado TensorFlow Developer',
           cert3_title: 'Azure Data Scientist Associate',
           cert4_title: 'Especializa\u00e7\u00e3o em Deep Learning',
+          education_eyebrow: 'Forma\u00e7\u00e3o acad\u00eamica',
+          education_title: 'Forma\u00e7\u00e3o <span class="italic">acad\u00eamica</span>.',
+          ibmec_school: 'Ibmec',
+          ibmec_program: 'Master of Business Administration - MBA, IA, Ci\u00eancia de Dados e Big Data',
+          ibmec_date: 'mai de 2025 \u2013 mai de 2026',
+          ibmec_skills: 'Intelig\u00eancia artificial, Ci\u00eancia de dados e mais 5 compet\u00eancias',
+          fiap_school: 'FIAP',
+          fiap_program: 'Curso Superior de Tecnologia (CST), Defesa Cibern\u00e9tica',
+          fiap_date: 'fev de 2023 \u2013 fev de 2025',
+          fiap_skills: 'Ciberseguran\u00e7a',
+          experience_eyebrow: 'Experi\u00eancia',
+          experience_title: 'Trabalho que <span class="italic">construiu</span> minhas habilidades.',
+          exp1_company: 'RHI Magnesita',
+          exp1_duration: '2 anos 9 meses',
+          exp1_location: 'Contagem, Minas Gerais, Brasil',
+          exp2_role: 'Analista de Ciberseguran\u00e7a J\u00fanior',
+          exp2_period: 'fev de 2025 \u2013 Presente \u00b7 1 ano 3 meses',
+          exp2_location: 'Remoto',
+          exp3_role: 'Estagi\u00e1rio de Seguran\u00e7a da Informa\u00e7\u00e3o',
+          exp3_period: 'ago de 2023 \u2013 fev de 2025 \u00b7 1 ano 7 meses',
+          exp3_location: 'H\u00edbrido',
+          exp4_role: 'Estagi\u00e1rio de Engenharia de Firewall',
+          exp4_company: 'LOGICNET TECNOLOGIA',
+          exp4_duration: '4 meses',
+          exp4_period: 'abr de 2023 \u2013 jul de 2023 \u00b7 4 meses',
+          exp4_location: 'Belo Horizonte, Minas Gerais, Brasil \u00b7 H\u00edbrido',
         }
       };
 
