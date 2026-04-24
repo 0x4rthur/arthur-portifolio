@@ -606,21 +606,23 @@
 
     .hero__stats {
       display: flex;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
       justify-content: center;
-      gap: 0.55rem;
+      align-items: center;
+      gap: 0.5rem;
     }
 
     .stat-pill {
       display: inline-flex;
       align-items: center;
-      gap: 0.4rem;
-      padding: 0.5rem 1rem;
+      gap: 0.35rem;
+      padding: 0.45rem 0.85rem;
       background: var(--surface-variant);
       border-radius: 100px;
       font-size: 0.8rem;
       color: var(--on-surface-variant);
       font-variation-settings: 'wght' 500;
+      white-space: nowrap;
     }
 
     .stat-pill strong {
@@ -649,7 +651,7 @@
       letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--primary);
-      margin-bottom: 0.5rem;
+      margin-bottom: 1.2rem;
     }
 
     .eyebrow::before {
@@ -1042,12 +1044,12 @@
     }
 
     .skill-group--wide .chip-tech {
-      font-size: 1.15rem;
-      padding: 0.8rem 1.8rem;
-      font-variation-settings: 'wght' 650;
+      font-size: 0.8rem;
+      padding: 0.35rem 0.9rem;
+      font-variation-settings: 'wght' 600;
       position: relative;
       overflow: hidden;
-      transition: box-shadow 500ms cubic-bezier(0.4, 0, 0.2, 1), transform 500ms cubic-bezier(0.4, 0, 0.2, 1), border-color 500ms cubic-bezier(0.4, 0, 0.2, 1);
+      transition: box-shadow 500ms cubic-bezier(0.4, 0, 0.2, 1), border-color 500ms cubic-bezier(0.4, 0, 0.2, 1);
       z-index: 1;
       border: 1px solid transparent;
       cursor: pointer;
@@ -1070,8 +1072,7 @@
     }
 
     .skill-group--wide .chip-tech:hover {
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-      transform: translateY(-2px);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
       border-color: rgba(0, 0, 0, 0.05);
     }
 
@@ -1155,6 +1156,7 @@
       max-width: 680px;
       margin-left: auto;
       margin-right: auto;
+      margin-bottom: 2.5rem;
     }
 
     .contact-block p {
@@ -1168,7 +1170,7 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 0.85rem;
+      gap: 1.2rem;
     }
 
     .fab {
@@ -1460,6 +1462,64 @@
       padding: 0.2rem 0.6rem;
       border-radius: 100px;
       letter-spacing: 0.03em;
+    }
+
+    .cert-card--linked {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      cursor: pointer;
+    }
+
+    .cursor-tooltip {
+      position: fixed;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      background: var(--surface-variant);
+      color: var(--primary);
+      font-size: 0.72rem;
+      font-variation-settings: 'wght' 600;
+      letter-spacing: 0.03em;
+      padding: 0.3rem 0.7rem;
+      border-radius: 6px;
+      border: 1px solid var(--outline-variant);
+      white-space: nowrap;
+      opacity: 0;
+      transition: opacity 180ms ease;
+      will-change: transform;
+      z-index: 9999;
+    }
+
+    .cursor-tooltip.is-visible {
+      opacity: 1;
+    }
+
+    .cert-img-popup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      background: var(--surface-container);
+      border: 1px solid var(--outline-variant);
+      border-radius: 12px;
+      padding: 0.5rem;
+      box-shadow: 0 8px 40px -8px rgba(0, 0, 0, 0.22);
+      opacity: 0;
+      transition: opacity 200ms ease;
+      will-change: transform;
+      z-index: 9999;
+    }
+
+    .cert-img-popup.is-visible {
+      opacity: 1;
+    }
+
+    .cert-img-popup img {
+      display: block;
+      width: 260px;
+      height: auto;
+      border-radius: 8px;
     }
 
     /* ==================== EDUCATION ==================== */
@@ -2076,22 +2136,26 @@
         <div class="certs-column">
           <div class="certs-section-title reveal">Certifications</div>
           <div class="certs-grid">
-            <div class="cert-card reveal">
+            <a class="cert-card cert-card--linked reveal" id="data-analytics-card"
+              href="https://www.credly.com/badges/692b7b12-8248-42a7-8e9e-c8110b397e60/" target="_blank"
+              rel="noopener noreferrer">
               <div class="cert-card__img">
                 <img src="assets/certs/google_data_analytics.png" alt="Google Data Analytics Certificate" />
               </div>
               <div class="cert-card__title">Data Analytics</div>
               <div class="cert-card__issuer">Google</div>
               <span class="cert-card__year">2026</span>
-            </div>
-            <div class="cert-card reveal">
+            </a>
+            <a class="cert-card cert-card--linked reveal" id="az900-card"
+              href="https://www.credly.com/badges/b168b1b8-3ca0-46c9-b4f2-7069c1c9df61/" target="_blank"
+              rel="noopener noreferrer">
               <div class="cert-card__img">
                 <img src="assets/certs/az_900.png" alt="Microsoft Azure Fundamentals AZ-900" />
               </div>
               <div class="cert-card__title">Azure Fundamentals</div>
               <div class="cert-card__issuer">Microsoft</div>
               <span class="cert-card__year">2026</span>
-            </div>
+            </a>
             <div class="cert-card reveal">
               <div class="cert-card__img">
                 <img src="assets/certs/cert_azure.png" alt="Microsoft Azure Data Scientist Associate" />
@@ -2100,7 +2164,7 @@
               <div class="cert-card__issuer">Microsoft</div>
               <span class="cert-card__year">2023</span>
             </div>
-            <div class="cert-card reveal">
+            <div class="cert-card cert-card--linked reveal" id="dale-carnegie-card">
               <div class="cert-card__img">
                 <img src="assets/certs/dale_carnegie.png" alt="Dale Carnegie Certificate" />
               </div>
@@ -2214,34 +2278,6 @@
         <div class="eyebrow eyebrow--center">Contact</div>
         <h2 class="section-title section-title--center" data-i18n-html="true">Let's make something <span
             class="italic">quietly useful</span>.</h2>
-        <p>I'm open to consulting, advisory, or full-time lead roles — if it involves shipping ML that people will
-          actually rely on, I'd like to hear about it.</p>
-        <div class="contact-engagement">
-          <span class="contact-engagement__title">Open to</span>
-          <span class="contact-engagement__item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <rect x="2" y="7" width="20" height="14" rx="2" />
-              <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" />
-            </svg>
-            Full-time Data Science &amp; ML Engineering roles
-          </span>
-          <span class="contact-engagement__item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-              <circle cx="9" cy="7" r="4" />
-              <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-              <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-            </svg>
-            Consulting &amp; advisory projects
-          </span>
-          <span class="contact-engagement__item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <polyline points="16 18 22 12 16 6" />
-              <polyline points="8 6 2 12 8 18" />
-            </svg>
-            Contract work (3–6 months)
-          </span>
-        </div>
         <div class="contact-fabs">
           <a href="mailto:arthurchequer@hotmail.com" class="fab" aria-label="Send email to Arthur">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
@@ -2624,7 +2660,7 @@
       // Periodic data input from space → into an input node
       let lastInput = 0;
       function spawnInput(now) {
-        const delay = 1100 + Math.random() * 700;
+        const delay = 1800 + Math.random() * 1000;
         if (now - lastInput < delay) return;
         lastInput = now;
         const sLat = (Math.random() - 0.5) * Math.PI;
@@ -2646,7 +2682,7 @@
       // Periodic prediction output: from an output node → out to space
       let lastOutput = 0;
       function spawnOutput(now) {
-        const delay = 2400 + Math.random() * 1500;
+        const delay = 3500 + Math.random() * 2000;
         if (now - lastOutput < delay) return;
         lastOutput = now;
         const sourceIdx = OUTPUT_IDX[Math.floor(Math.random() * OUTPUT_IDX.length)];
@@ -2693,8 +2729,8 @@
       /* ===== DRAWING ===== */
       function drawWireframe() {
         // Subtle latitude circles only — less visual noise so the mesh reads
-        const LAT = 8;
-        const SEG = 64;
+        const LAT = 6;
+        const SEG = 32;
         ctx.lineWidth = 1;
         ctx.strokeStyle = 'rgba(0, 80, 81, 0.09)';
         for (let i = 1; i < LAT; i++) {
@@ -2828,7 +2864,7 @@
           p.t += p.speed;
           if (p.t >= 1) {
             const tgt = nodes[p.targetIdx];
-            ripples.push({ x: tgt.x, y: tgt.y, z: tgt.z, kind: 'input', t: 0 });
+            if (ripples.length < 6) ripples.push({ x: tgt.x, y: tgt.y, z: tgt.z, kind: 'input', t: 0 });
             burstFromNode(p.targetIdx);
             inputs.splice(i, 1);
             continue;
@@ -2902,7 +2938,7 @@
       }
 
       function decayActivations() {
-        for (const n of nodes) n.activation *= 0.955;
+        for (const n of nodes) n.activation *= 0.93;
       }
 
       // Maintain baseline activity if the network goes quiet
@@ -2924,8 +2960,8 @@
         if (!dragging) return;
         const dx = clientX - lastX;
         const dy = clientY - lastY;
-        rotY += dx * 0.008;
-        rotX += dy * 0.008;
+        rotY -= (dx / W) * 1.2;
+        rotX += (dy / H) * 1.2;
         rotX = clamp(rotX, -1.2, 1.2);
         dragDX = dx; dragDY = dy;
         lastX = clientX; lastY = clientY;
@@ -2933,8 +2969,8 @@
       function onUp() {
         if (!dragging) return;
         dragging = false;
-        velY = dragDX * 0.008 * 0.6 + targetAutoVelY;
-        velX = dragDY * 0.008 * 0.4;
+        velY = clamp(-(dragDX / W) * 1.2, -0.04, 0.04) + targetAutoVelY;
+        velX = clamp((dragDY / H) * 1.0, -0.03, 0.03);
       }
       canvas.addEventListener('mousedown', (e) => { e.preventDefault(); onDown(e.clientX, e.clientY); });
       window.addEventListener('mousemove', (e) => onMove(e.clientX, e.clientY));
@@ -2951,8 +2987,12 @@
 
       /* ===== MAIN LOOP ===== */
       let rafId = null;
+      let lastGlobeTime = 0;
+      let globeVisible = true;
       let activityCheckTick = 0;
       function frame(now) {
+        const dt = lastGlobeTime ? Math.min(now - lastGlobeTime, 50) : 16;
+        lastGlobeTime = now;
         ctx.clearRect(0, 0, W, H);
 
         // Crossfade: globe fades out as _blendT rises toward 1
@@ -2961,12 +3001,12 @@
         canvas.style.opacity = _gA.toFixed(3);
 
         if (_gA > 0.005) {
-          autoVelY = lerp(autoVelY, targetAutoVelY, 0.04);
+          autoVelY = lerp(autoVelY, targetAutoVelY, 1 - Math.pow(0.96, dt / 16));
           if (!dragging) {
-            velY = lerp(velY, autoVelY, 0.035);
-            velX = lerp(velX, 0, 0.06);
-            rotY += velY;
-            rotX += velX;
+            velY = lerp(velY, autoVelY, 1 - Math.pow(0.965, dt / 16));
+            velX = lerp(velX, 0, 1 - Math.pow(0.94, dt / 16));
+            rotY += velY * (dt / 16);
+            rotX += velX * (dt / 16);
             rotX = clamp(rotX, -1.2, 1.2);
           }
 
@@ -2991,13 +3031,21 @@
 
         rafId = requestAnimationFrame(frame);
       }
+      if (typeof IntersectionObserver !== 'undefined') {
+        new IntersectionObserver(entries => {
+          globeVisible = entries[0].isIntersecting;
+          if (globeVisible && !rafId) { lastGlobeTime = 0; rafId = requestAnimationFrame(frame); }
+          else if (!globeVisible && rafId) { cancelAnimationFrame(rafId); rafId = null; }
+        }, { threshold: 0 }).observe(canvas);
+      }
+
       rafId = requestAnimationFrame(frame);
 
       document.addEventListener('visibilitychange', () => {
         if (document.hidden) {
-          cancelAnimationFrame(rafId);
-        } else {
-          rafId = requestAnimationFrame(frame);
+          cancelAnimationFrame(rafId); rafId = null;
+        } else if (globeVisible) {
+          lastGlobeTime = 0; rafId = requestAnimationFrame(frame);
         }
       });
     }
@@ -3092,7 +3140,7 @@
           progress: -0.08 - Math.random() * 0.08,
           speed: 0.0038 + Math.random() * 0.0026,
           noiseOff: Math.random() * Math.PI * 6,
-          noiseAmp: 14 + Math.random() * 12,
+          noiseAmp: 6 + Math.random() * 5,
           lastStageHit: -1,
           flashT: 0,
           dead: false,
@@ -3131,11 +3179,11 @@
         if (!node) return;
         node.activation = 1.0;
         netRipples.push({ x: node.x, y: node.y, t: 0 });
-        if (netSignals.length >= 50) return;
+        if (netSignals.length >= 20) return;
         if (Math.random() > 0.55) return;
         if (li < netLayers.length - 1) {
           const nj = Math.floor(Math.random() * netLayers[li + 1].length);
-          netSignals.push({ li, ni, lj: li + 1, nj, t: 0, speed: 0.018 + Math.random() * 0.010, bp: false });
+          netSignals.push({ li, ni, lj: li + 1, nj, t: 0, speed: 0.009 + Math.random() * 0.005, bp: false });
         }
       }
 
@@ -3149,7 +3197,7 @@
           const k = Math.min(2 + (Math.random() < 0.45 ? 1 : 0), next.length);
           const pool = Array.from({ length: next.length }, (_, i) => i).sort(() => Math.random() - 0.5);
           for (let i = 0; i < k; i++)
-            netSignals.push({ li, ni, lj: li + 1, nj: pool[i], t: 0, speed: 0.016 + Math.random() * 0.010, bp: false });
+            netSignals.push({ li, ni, lj: li + 1, nj: pool[i], t: 0, speed: 0.008 + Math.random() * 0.005, bp: false });
         }
       }
 
@@ -3159,7 +3207,7 @@
         const ni = Math.floor(Math.random() * netLayers[lastLi].length);
         if (netLayers[lastLi - 1]) {
           const nj = Math.floor(Math.random() * netLayers[lastLi - 1].length);
-          netSignals.push({ li: lastLi, ni, lj: lastLi - 1, nj, t: 0, speed: 0.013 + Math.random() * 0.007, bp: true });
+          netSignals.push({ li: lastLi, ni, lj: lastLi - 1, nj, t: 0, speed: 0.007 + Math.random() * 0.004, bp: true });
         }
       }
 
@@ -3174,7 +3222,7 @@
         ctx.strokeStyle = '#005051';
         ctx.lineWidth = 1.2;
         ctx.setLineDash([7, 7]);
-        ctx.lineDashOffset = -(now * 0.040 % 14);
+        ctx.lineDashOffset = -(now * 0.018 % 14);
         ctx.beginPath();
         ctx.moveTo(stages[0].x, stages[0].y);
         for (let i = 1; i < stages.length; i++) ctx.lineTo(stages[i].x, stages[i].y);
@@ -3349,7 +3397,7 @@
         for (const layer of netLayers) {
           for (const node of layer) {
             const dep = 0.44 + node.activation * 0.56;
-            const sz = 4.5 + node.activation * 5.5;
+            const sz = 4.5 + node.activation * 3.5;
             const isIn = node.li === 0;
             const isOut = node.li === netLayers.length - 1;
 
@@ -3425,7 +3473,7 @@
         /* Ripples on node activation */
         for (let i = netRipples.length - 1; i >= 0; i--) {
           const r = netRipples[i];
-          r.t += 0.028;
+          r.t += 0.015;
           if (r.t >= 1) { netRipples.splice(i, 1); continue; }
           ctx.save();
           ctx.globalAlpha = a * (1 - r.t) * 0.52;
@@ -3605,7 +3653,7 @@
             if (si !== p.lastStageHit && si >= 0 && si <= 4) {
               p.lastStageHit = si;
               p.flashT = 1.0;
-              if (stages[si]) pipeRipples.push({ x: stages[si].x, y: stages[si].y, sid: si, t: 0 });
+              if (stages[si] && Math.random() < 0.4) pipeRipples.push({ x: stages[si].x, y: stages[si].y, sid: si, t: 0 });
               if (si === 4) pipeBatches++;
             }
             if (si >= 0 && si < 5) stageCounts[si]++;
@@ -3648,7 +3696,7 @@
             if (netBatchCount % 8 === 0) {
               netEpoch++;
               netLoss = Math.max(0.04, netLoss * 0.91 + Math.random() * 0.014);
-              if (Math.random() < 0.7) spawnBackprop();
+              if (Math.random() < 0.4) spawnBackprop();
             } else {
               netLoss = Math.max(0.04,
                 netLoss * (0.997 + Math.random() * 0.004) + (Math.random() - 0.55) * 0.008);
@@ -3663,7 +3711,7 @@
                 ni,
                 sy: netLayers[0][ni].y + (Math.random() - 0.5) * 48,
                 t: 0,
-                speed: 0.016 + Math.random() * 0.010,
+                speed: 0.008 + Math.random() * 0.005,
               });
             }
           }
@@ -3764,6 +3812,85 @@
       document.addEventListener('mouseenter', () => { cursorEl.style.opacity = '1'; });
     })();
 
+  </script>
+
+  <div class="cursor-tooltip" id="cert-cursor-tooltip">See credential ↗</div>
+  <div class="cert-img-popup" id="dale-preview-popup">
+    <img src="assets/certs/dale_carnegie_physical.png" alt="Dale Carnegie Certificate" />
+  </div>
+
+  <script>
+    (function () {
+      const LERP = 0.20;
+
+      function makeFollower(el, getOffset) {
+        let mouseX = 0, mouseY = 0;
+        let cx = 0, cy = 0;
+        let active = false;
+        let raf = null;
+
+        function tick() {
+          cx += (mouseX - cx) * LERP;
+          cy += (mouseY - cy) * LERP;
+
+          const { x, y } = getOffset(cx, cy, el);
+          el.style.transform = `translate(${x}px, ${y}px)`;
+
+          const still = Math.abs(mouseX - cx) < 0.15 && Math.abs(mouseY - cy) < 0.15;
+          if (active || !still) {
+            raf = requestAnimationFrame(tick);
+          } else {
+            raf = null;
+          }
+        }
+
+        return function attach(cardId) {
+          const card = document.getElementById(cardId);
+          if (!card) return;
+
+          card.addEventListener('mouseenter', (e) => {
+            mouseX = e.clientX; mouseY = e.clientY;
+            cx = e.clientX; cy = e.clientY;
+            active = true;
+            el.classList.add('is-visible');
+            if (!raf) raf = requestAnimationFrame(tick);
+          });
+
+          card.addEventListener('mouseleave', () => {
+            active = false;
+            el.classList.remove('is-visible');
+          });
+
+          card.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            if (!raf) raf = requestAnimationFrame(tick);
+          });
+        };
+      }
+
+      // "See credential" tooltip — fixed offset above-right of cursor
+      const attachTooltip = makeFollower(
+        document.getElementById('cert-cursor-tooltip'),
+        (cx, cy) => ({ x: cx + 14, y: cy - 28 })
+      );
+      attachTooltip('az900-card');
+      attachTooltip('data-analytics-card');
+
+      // Dale Carnegie image popup — smart flip to avoid viewport overflow
+      const attachImgPopup = makeFollower(
+        document.getElementById('dale-preview-popup'),
+        (cx, cy, el) => {
+          const w = el.offsetWidth || 276;
+          const h = el.offsetHeight || 200;
+          const gap = 36;
+          const x = (cx + gap + w > window.innerWidth) ? cx - w - gap : cx + gap;
+          const y = cy - h / 2;
+          return { x, y };
+        }
+      );
+      attachImgPopup('dale-carnegie-card');
+    })();
   </script>
 </body>
 
