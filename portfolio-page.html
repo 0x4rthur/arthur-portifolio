@@ -5,7 +5,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Arthur Chequer — Data Scientist & AI Specialist</title>
-  <link href="https://fonts.cdnfonts.com/css/sf-pro-display" rel="stylesheet" />
+  <link rel="preload" href="https://fonts.cdnfonts.com/css/sf-pro-display" as="style"
+    onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript>
+    <link href="https://fonts.cdnfonts.com/css/sf-pro-display" rel="stylesheet" />
+  </noscript>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     /* ==================== ROOT TOKENS ==================== */
@@ -170,10 +174,13 @@
       bottom: 0;
       left: 0;
       height: 2px;
-      width: 0;
+      width: 1px;
       background: var(--primary);
       border-radius: 2px;
-      transition: left 300ms var(--spring), width 300ms var(--spring);
+      transform-origin: left center;
+      transform: translate3d(0, 0, 0) scaleX(0);
+      transition: transform 300ms var(--spring);
+      will-change: transform;
       pointer-events: none;
     }
 
@@ -240,7 +247,7 @@
 
     /* ==================== HERO ==================== */
     .hero {
-      padding: 10rem 0 3rem;
+      padding: clamp(5rem, 10vw, 10rem) 0 clamp(2rem, 4vw, 3rem);
       position: relative;
     }
 
@@ -632,14 +639,8 @@
 
     /* ==================== SECTION GENERIC ==================== */
     section.block {
-      padding: 4rem 0;
+      padding: clamp(2.5rem, 6vw, 4rem) 0;
       scroll-margin-top: 4rem;
-    }
-
-    @media (max-width: 640px) {
-      section.block {
-        padding: 2.5rem 0;
-      }
     }
 
     .eyebrow {
@@ -821,6 +822,7 @@
       font-size: 0.92rem;
       display: -webkit-box;
       -webkit-line-clamp: 3;
+      line-clamp: 3;
       -webkit-box-orient: vertical;
       overflow: hidden;
       margin: 0;
@@ -1032,10 +1034,12 @@
 
     .skill__fill {
       height: 100%;
-      width: 0%;
+      width: 100%;
       background: linear-gradient(90deg, var(--primary-light) 0%, var(--primary) 100%);
       border-radius: 100px;
-      transition: width 800ms var(--ease-out);
+      transform: scaleX(0);
+      transform-origin: left center;
+      transition: transform 800ms var(--ease-out);
     }
 
     .skill-group--wide {
@@ -1517,7 +1521,7 @@
 
     .cert-img-popup img {
       display: block;
-      width: 260px;
+      width: clamp(300px, 34vw, 380px);
       height: auto;
       border-radius: 8px;
     }
@@ -1673,8 +1677,8 @@
     <nav class="nav" aria-label="Primary">
       <a href="#top" class="nav__logo">arthur<span>.</span>chequer</a>
       <div class="nav__links" id="nav-links">
-        <a href="#projects" data-section="projects" data-i18n="nav_projects">Projects</a>
         <a href="#about" data-section="about" data-i18n="nav_about">About</a>
+        <a href="#projects" data-section="projects" data-i18n="nav_projects">Projects</a>
         <a href="#skills" data-section="skills" data-i18n="nav_skills">Skills</a>
         <a href="#contact" data-section="contact" data-i18n="nav_contact">Contact</a>
         <span class="nav__indicator" id="nav-indicator"></span>
@@ -2140,7 +2144,8 @@
               href="https://www.credly.com/badges/692b7b12-8248-42a7-8e9e-c8110b397e60/" target="_blank"
               rel="noopener noreferrer">
               <div class="cert-card__img">
-                <img src="assets/certs/google_data_analytics.png" alt="Google Data Analytics Certificate" />
+                <img src="assets/certs/google_data_analytics.png" alt="Google Data Analytics Certificate"
+                  loading="lazy" decoding="async" />
               </div>
               <div class="cert-card__title">Data Analytics</div>
               <div class="cert-card__issuer">Google</div>
@@ -2150,7 +2155,8 @@
               href="https://www.credly.com/badges/b168b1b8-3ca0-46c9-b4f2-7069c1c9df61/" target="_blank"
               rel="noopener noreferrer">
               <div class="cert-card__img">
-                <img src="assets/certs/az_900.png" alt="Microsoft Azure Fundamentals AZ-900" />
+                <img src="assets/certs/az_900.png" alt="Microsoft Azure Fundamentals AZ-900" loading="lazy"
+                  decoding="async" />
               </div>
               <div class="cert-card__title">Azure Fundamentals</div>
               <div class="cert-card__issuer">Microsoft</div>
@@ -2158,7 +2164,8 @@
             </a>
             <div class="cert-card reveal">
               <div class="cert-card__img">
-                <img src="assets/certs/cert_azure.png" alt="Microsoft Azure Data Scientist Associate" />
+                <img src="assets/certs/cert_azure.png" alt="Microsoft Azure Data Scientist Associate" loading="lazy"
+                  decoding="async" />
               </div>
               <div class="cert-card__title">Azure Data Scientist</div>
               <div class="cert-card__issuer">Microsoft</div>
@@ -2166,7 +2173,8 @@
             </div>
             <div class="cert-card cert-card--linked reveal" id="dale-carnegie-card">
               <div class="cert-card__img">
-                <img src="assets/certs/dale_carnegie.png" alt="Dale Carnegie Certificate" />
+                <img src="assets/certs/dale_carnegie.png" alt="Dale Carnegie Certificate" loading="lazy"
+                  decoding="async" />
               </div>
               <div class="cert-card__title">Dale Carnegie</div>
               <div class="cert-card__issuer">Dale Carnegie Training</div>
@@ -2187,7 +2195,7 @@
         <!-- RHI Magnesita -->
         <div class="experience-company experience-company--rhim reveal">
           <div class="experience-company__logo">
-            <img src="assets/certs/rhim_logo.png" alt="RHI Magnesita logo" />
+            <img src="assets/certs/rhim_logo.png" alt="RHI Magnesita logo" loading="lazy" decoding="async" />
           </div>
           <div class="experience-company__header">
             <div class="experience-company__title">RHI Magnesita</div>
@@ -2219,7 +2227,7 @@
         <!-- LogicNET -->
         <div class="experience-company reveal">
           <div class="experience-company__logo">
-            <img src="assets/certs/logicnet_logo.png" alt="LogicNET logo" />
+            <img src="assets/certs/logicnet_logo.png" alt="LogicNET logo" loading="lazy" decoding="async" />
           </div>
           <div class="experience-company__header">
             <div class="experience-company__title">LOGICNET TECNOLOGIA</div>
@@ -2250,7 +2258,7 @@
       <div class="education-grid">
         <div class="education-card reveal">
           <div class="education-card__img">
-            <img src="assets/certs/ibmec_logo.png" alt="Ibmec logo" />
+            <img src="assets/certs/ibmec_logo.png" alt="Ibmec logo" loading="lazy" decoding="async" />
           </div>
           <div class="education-card__content">
             <div class="education-card__school">Artificial Intelligence, Data Science and Big Data</div>
@@ -2261,7 +2269,7 @@
 
         <div class="education-card reveal">
           <div class="education-card__img">
-            <img src="assets/certs/fiap_logo.png" alt="FIAP logo" />
+            <img src="assets/certs/fiap_logo.png" alt="FIAP logo" loading="lazy" decoding="async" />
           </div>
           <div class="education-card__content">
             <div class="education-card__school">Cybersecurity</div>
@@ -2397,7 +2405,7 @@
           const valEl = el.querySelector('.skill__val');
 
           setTimeout(() => {
-            fill.style.width = target + '%';
+            fill.style.transform = 'scaleX(' + (target / 100) + ')';
             const dur = 800;
             const start = performance.now();
             function tick(now) {
@@ -2452,13 +2460,14 @@
       const links = $$('#nav-links a[data-section]');
       const ind = $('#nav-indicator');
       const sections = links.map(a => $('#' + a.dataset.section)).filter(Boolean);
+      let clickLock = null;
 
       function moveIndicator(link) {
-        if (!link) { ind.style.width = '0'; return; }
+        if (!link) { ind.style.transform = 'translate3d(0,0,0) scaleX(0)'; return; }
         const parentRect = link.parentElement.getBoundingClientRect();
         const r = link.getBoundingClientRect();
-        ind.style.left = (r.left - parentRect.left) + 'px';
-        ind.style.width = r.width + 'px';
+        const x = r.left - parentRect.left;
+        ind.style.transform = `translate3d(${x}px, 0, 0) scaleX(${r.width})`;
       }
 
       function setActive(sectionId) {
@@ -2471,19 +2480,47 @@
         moveIndicator(activeLink);
       }
 
-      const obs = new IntersectionObserver((entries) => {
-        let best = null;
-        entries.forEach(e => {
-          if (e.isIntersecting && (!best || e.intersectionRatio > best.intersectionRatio)) best = e;
-        });
-        if (best) setActive(best.target.id);
-      }, { rootMargin: '-40% 0px -50% 0px', threshold: [0, 0.25, 0.5, 0.75, 1] });
-      sections.forEach(s => obs.observe(s));
-      links.forEach(a => a.addEventListener('click', () => setActive(a.dataset.section)));
+      function getActiveSectionFromScroll() {
+        // At bottom of page → always activate last section
+        if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 4) {
+          return sections[sections.length - 1];
+        }
+
+        // Find the last section whose top has passed 35% of the viewport
+        const trigger = window.scrollY + window.innerHeight * 0.35;
+        let active = null;
+        for (const section of sections) {
+          const top = section.getBoundingClientRect().top + window.scrollY;
+          if (top <= trigger) active = section;
+        }
+        return active;
+      }
+
+      function update() {
+        if (clickLock) return;
+        const active = getActiveSectionFromScroll();
+        if (active) {
+          setActive(active.id);
+        } else {
+          links.forEach(a => a.classList.remove('active'));
+          ind.style.transform = 'translate3d(0,0,0) scaleX(0)';
+        }
+      }
+
+      window.addEventListener('scroll', update, { passive: true });
       window.addEventListener('resize', () => {
         const active = links.find(a => a.classList.contains('active'));
-        moveIndicator(active);
+        moveIndicator(active || null);
       });
+
+      links.forEach(a => a.addEventListener('click', () => {
+        setActive(a.dataset.section);
+        // Hold the click-activated state briefly so scroll doesn't override immediately
+        clearTimeout(clickLock);
+        clickLock = setTimeout(() => { clickLock = null; update(); }, 800);
+      }));
+
+      update();
     })();
 
     /* ==================== PROJECT IMAGE PARALLAX ==================== */
@@ -2973,8 +3010,8 @@
         velX = clamp((dragDY / H) * 1.0, -0.03, 0.03);
       }
       canvas.addEventListener('mousedown', (e) => { e.preventDefault(); onDown(e.clientX, e.clientY); });
-      window.addEventListener('mousemove', (e) => onMove(e.clientX, e.clientY));
-      window.addEventListener('mouseup', onUp);
+      window.addEventListener('mousemove', (e) => onMove(e.clientX, e.clientY), { passive: true });
+      window.addEventListener('mouseup', onUp, { passive: true });
       canvas.addEventListener('touchstart', (e) => {
         if (e.touches.length !== 1) return;
         onDown(e.touches[0].clientX, e.touches[0].clientY);
@@ -2983,7 +3020,7 @@
         if (e.touches.length !== 1) return;
         onMove(e.touches[0].clientX, e.touches[0].clientY);
       }, { passive: true });
-      window.addEventListener('touchend', onUp);
+      window.addEventListener('touchend', onUp, { passive: true });
 
       /* ===== MAIN LOOP ===== */
       let rafId = null;
@@ -3725,10 +3762,18 @@
         rafId = requestAnimationFrame(frame);
       }
 
+      let mlVisible = true;
+      if (typeof IntersectionObserver !== 'undefined') {
+        new IntersectionObserver(entries => {
+          mlVisible = entries[0].isIntersecting;
+          if (mlVisible && !rafId) { lastTime = 0; rafId = requestAnimationFrame(frame); }
+          else if (!mlVisible && rafId) { cancelAnimationFrame(rafId); rafId = null; }
+        }, { threshold: 0 }).observe(canvas);
+      }
       rafId = requestAnimationFrame(frame);
       document.addEventListener('visibilitychange', () => {
-        if (document.hidden) cancelAnimationFrame(rafId);
-        else { lastTime = 0; rafId = requestAnimationFrame(frame); }
+        if (document.hidden) { cancelAnimationFrame(rafId); rafId = null; }
+        else if (mlVisible && !rafId) { lastTime = 0; rafId = requestAnimationFrame(frame); }
       });
     })();
 
@@ -3736,6 +3781,7 @@
     (function initMorphCycle() {
       const globeTicks = document.getElementById('globe-ticks-overlay');
       const pipeTicks = document.getElementById('pipeline-ticks-overlay');
+      const host = document.getElementById('globe-canvas') || document.querySelector('.globe-frame');
 
       const GLOBE_HOLD = 4000;
       const ML_HOLD = 8800;  // pipeline 4s + fade 0.8s + training 4s
@@ -3745,6 +3791,8 @@
       let phase = 'globe';
       let timer = 0;
       let lastT = 0;
+      let morphRaf = null;
+      let morphVisible = true;
 
       function tick(now) {
         if (!lastT) lastT = now;
@@ -3793,9 +3841,21 @@
         if (globeTicks) globeTicks.style.opacity = gT.toFixed(3);
         if (pipeTicks) pipeTicks.style.opacity = pT.toFixed(3);
 
-        requestAnimationFrame(tick);
+        morphRaf = requestAnimationFrame(tick);
       }
-      requestAnimationFrame(tick);
+
+      if (host && typeof IntersectionObserver !== 'undefined') {
+        new IntersectionObserver(entries => {
+          morphVisible = entries[0].isIntersecting;
+          if (morphVisible && !morphRaf) { lastT = 0; morphRaf = requestAnimationFrame(tick); }
+          else if (!morphVisible && morphRaf) { cancelAnimationFrame(morphRaf); morphRaf = null; }
+        }, { threshold: 0 }).observe(host);
+      }
+      morphRaf = requestAnimationFrame(tick);
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) { if (morphRaf) { cancelAnimationFrame(morphRaf); morphRaf = null; } }
+        else if (morphVisible && !morphRaf) { lastT = 0; morphRaf = requestAnimationFrame(tick); }
+      });
     })();
 
     /* ==================== CUSTOM CURSOR ==================== */
@@ -3804,8 +3864,14 @@
       const cursorEl = document.getElementById('c-cursor');
       if (!cursorEl) return;
 
+      let cx = 0, cy = 0, raf = null;
+      function flush() {
+        cursorEl.style.transform = `translate3d(${cx}px,${cy}px,0)`;
+        raf = null;
+      }
       window.addEventListener('mousemove', e => {
-        cursorEl.style.transform = `translate(${e.clientX}px,${e.clientY}px)`;
+        cx = e.clientX; cy = e.clientY;
+        if (!raf) raf = requestAnimationFrame(flush);
       }, { passive: true });
 
       document.addEventListener('mouseleave', () => { cursorEl.style.opacity = '0'; });
@@ -3816,7 +3882,8 @@
 
   <div class="cursor-tooltip" id="cert-cursor-tooltip">See credential ↗</div>
   <div class="cert-img-popup" id="dale-preview-popup">
-    <img src="assets/certs/dale_carnegie_physical.png" alt="Dale Carnegie Certificate" />
+    <img src="assets/certs/dale_carnegie_physical.png" alt="Dale Carnegie Certificate" loading="lazy"
+      decoding="async" />
   </div>
 
   <script>
@@ -3881,8 +3948,8 @@
       const attachImgPopup = makeFollower(
         document.getElementById('dale-preview-popup'),
         (cx, cy, el) => {
-          const w = el.offsetWidth || 276;
-          const h = el.offsetHeight || 200;
+          const w = el.offsetWidth || 396;
+          const h = el.offsetHeight || 260;
           const gap = 36;
           const x = (cx + gap + w > window.innerWidth) ? cx - w - gap : cx + gap;
           const y = cy - h / 2;
