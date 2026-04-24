@@ -3,7 +3,7 @@
 Personal portfolio site for Arthur Chequer (Data Scientist & AI Specialist).
 Single-page, static, bilingual (EN / PT-BR), responsive.
 
-**Live:** https://0x4rthur.github.io/arthur-portifolio/
+**Live:** https://arthurchequer.com/
 
 ## Stack
 
