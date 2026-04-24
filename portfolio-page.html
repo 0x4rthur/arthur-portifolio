@@ -643,16 +643,35 @@
       scroll-margin-top: 4rem;
     }
 
+    /* ==================== SECTION OVERRIDES (preview tweaks) ==================== */
+    #experience {
+      height: 770px;
+    }
+
+    #education {
+      height: 380px;
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+
+    main#top {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+
     .eyebrow {
-      display: inline-flex;
+      display: flex;
       align-items: center;
-      gap: 0.6rem;
+      justify-content: flex-start;
+      flex-wrap: nowrap;
+      gap: 10px;
       font-size: 0.78rem;
       font-variation-settings: 'wght' 500;
       letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--primary);
-      margin-bottom: 1.2rem;
+      margin-top: 0;
+      margin-bottom: 0;
     }
 
     .eyebrow::before {
