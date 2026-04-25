@@ -30,6 +30,6 @@ build/
 # Logs
 *.log
 
-# Claude / agents (local-only tooling)
+# Local tooling
 .claude/
 .agents/
