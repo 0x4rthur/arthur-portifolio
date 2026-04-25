@@ -29,7 +29,3 @@ build/
 
 # Logs
 *.log
-
-# Local tooling
-.claude/
-.agents/
