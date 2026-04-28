@@ -1576,6 +1576,7 @@
       if (!window.matchMedia('(pointer: fine)').matches) return;
       const cursorEl = document.getElementById('c-cursor');
       if (!cursorEl) return;
+      cursorEl.removeAttribute('hidden');
 
       let cx = 0, cy = 0, raf = null;
       function flush() {
