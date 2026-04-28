@@ -75,22 +75,22 @@
 
     @media (max-width: 768px) {
       .container-max {
-        padding-left: max(2.5rem, env(safe-area-inset-left));
-        padding-right: max(2.5rem, env(safe-area-inset-right));
+        padding-left: max(2.75rem, env(safe-area-inset-left));
+        padding-right: max(2.75rem, env(safe-area-inset-right));
       }
     }
 
     @media (max-width: 480px) {
       .container-max {
-        padding-left: max(1.75rem, env(safe-area-inset-left));
-        padding-right: max(1.75rem, env(safe-area-inset-right));
+        padding-left: max(2.25rem, env(safe-area-inset-left));
+        padding-right: max(2.25rem, env(safe-area-inset-right));
       }
     }
 
     @media (max-width: 360px) {
       .container-max {
-        padding-left: max(1.5rem, env(safe-area-inset-left));
-        padding-right: max(1.5rem, env(safe-area-inset-right));
+        padding-left: max(1.75rem, env(safe-area-inset-left));
+        padding-right: max(1.75rem, env(safe-area-inset-right));
       }
     }
 
@@ -294,8 +294,8 @@
       border-bottom: 1px solid var(--outline-variant);
       padding-top: 5.5rem;
       padding-bottom: 1.75rem;
-      padding-left: max(2.5rem, env(safe-area-inset-left));
-      padding-right: max(2.5rem, env(safe-area-inset-right));
+      padding-left: max(2.75rem, env(safe-area-inset-left));
+      padding-right: max(2.75rem, env(safe-area-inset-right));
       display: flex;
       flex-direction: column;
       gap: 0.25rem;
@@ -1889,7 +1889,7 @@
 
       .hero__body {
         font-size: 1rem;
-        max-width: 100%;
+        max-width: 38ch;
       }
 
       .hero__ctas {
@@ -1897,9 +1897,22 @@
       }
 
       .hero__ctas .btn-pill {
-        flex: 1 1 auto;
+        flex: 0 1 auto;
         justify-content: center;
-        padding: 0.85rem 1.1rem;
+        padding: 0.85rem 1.4rem;
+        max-width: 320px;
+      }
+
+      .section-lede {
+        max-width: 36ch;
+      }
+
+      .about-intro {
+        max-width: 56ch;
+      }
+
+      .contact-copy {
+        max-width: 42ch;
       }
 
       .hero__stats {
@@ -2031,7 +2044,7 @@
       }
 
       .hero__name {
-        font-size: clamp(2.25rem, 11vw, 3rem);
+        font-size: clamp(2rem, 10vw, 2.6rem);
       }
 
       .hero__ctas {
@@ -2041,6 +2054,9 @@
 
       .hero__ctas .btn-pill {
         width: 100%;
+        max-width: 300px;
+        margin-left: auto;
+        margin-right: auto;
       }
 
       .globe-ticks .tick-bl,
