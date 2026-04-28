@@ -164,7 +164,7 @@
       });
 
       window.addEventListener('resize', () => {
-        if (window.innerWidth > 768 && drawer.classList.contains('is-open')) close();
+        if (window.innerWidth > 820 && drawer.classList.contains('is-open')) close();
       });
     })();
 

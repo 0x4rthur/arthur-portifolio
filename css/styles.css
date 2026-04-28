@@ -69,29 +69,8 @@
     .container-max {
       max-width: 1280px;
       margin: 0 auto;
-      padding-left: max(2rem, env(safe-area-inset-left));
-      padding-right: max(2rem, env(safe-area-inset-right));
-    }
-
-    @media (max-width: 768px) {
-      .container-max {
-        padding-left: max(3rem, env(safe-area-inset-left));
-        padding-right: max(3rem, env(safe-area-inset-right));
-      }
-    }
-
-    @media (max-width: 480px) {
-      .container-max {
-        padding-left: max(2.5rem, env(safe-area-inset-left));
-        padding-right: max(2.5rem, env(safe-area-inset-right));
-      }
-    }
-
-    @media (max-width: 360px) {
-      .container-max {
-        padding-left: max(2rem, env(safe-area-inset-left));
-        padding-right: max(2rem, env(safe-area-inset-right));
-      }
+      padding-left: max(clamp(1.25rem, 5vw, 3rem), env(safe-area-inset-left));
+      padding-right: max(clamp(1.25rem, 5vw, 3rem), env(safe-area-inset-right));
     }
 
     /* ==================== NAV ==================== */
@@ -350,7 +329,7 @@
     }
 
     /* ==================== MOBILE NAV BREAKPOINT ==================== */
-    @media (max-width: 768px) {
+    @media (max-width: 820px) {
       .nav {
         gap: 0.75rem;
         padding: 0.5rem 0.5rem 0.5rem 1rem;
@@ -382,27 +361,23 @@
 
     .hero__grid {
       display: grid;
-      grid-template-columns: 6.5fr 3.5fr;
+      grid-template-columns: clamp(320px, 60%, 760px) 1fr;
       gap: 3rem;
       align-items: center;
       max-width: 1120px;
       margin: 0 auto;
     }
 
-    @media (max-width: 960px) {
+    @media (max-width: 840px) {
       .hero__grid {
         grid-template-columns: 1fr;
         gap: 2rem;
-      }
-
-      .hero {
-        padding-top: 8rem;
       }
     }
 
     .hero__label {
       display: inline-block;
-      font-size: 0.78rem;
+      font-size: clamp(0.72rem, 1.8vw, 0.78rem);
       font-variation-settings: 'wght' 500;
       letter-spacing: 0.2em;
       text-transform: uppercase;
@@ -459,9 +434,9 @@
     }
 
     .hero__body {
-      font-size: 1rem;
+      font-size: clamp(0.9rem, 2.5vw, 1rem);
       color: var(--on-surface-variant);
-      max-width: 440px;
+      max-width: 52ch;
       margin-bottom: 1.5rem;
       opacity: 0;
       transform: translateY(10px);
@@ -742,8 +717,8 @@
 
     .hero__stats {
       display: flex;
-      flex-wrap: nowrap;
-      justify-content: center;
+      flex-wrap: wrap;
+      justify-content: flex-start;
       align-items: center;
       gap: 0.5rem;
     }
@@ -801,7 +776,7 @@
       justify-content: flex-start;
       flex-wrap: nowrap;
       gap: 10px;
-      font-size: 0.78rem;
+      font-size: clamp(0.72rem, 1.8vw, 0.78rem);
       font-variation-settings: 'wght' 500;
       letter-spacing: 0.2em;
       text-transform: uppercase;
@@ -858,9 +833,9 @@
     }
 
     .section-lede {
-      font-size: 1.0625rem;
+      font-size: clamp(0.95rem, 2.5vw, 1.0625rem);
       color: var(--on-surface-variant);
-      max-width: 540px;
+      max-width: 58ch;
       margin-bottom: 1.75rem;
     }
 
@@ -880,14 +855,8 @@
     /* ==================== PROJECTS ==================== */
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr));
       gap: 1.25rem;
-    }
-
-    @media (max-width: 820px) {
-      .projects-grid {
-        grid-template-columns: 1fr;
-      }
     }
 
     .proj-card {
@@ -956,7 +925,7 @@
 
     .proj-card__title {
       font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-      font-size: 1.35rem;
+      font-size: clamp(1.1rem, 3vw, 1.35rem);
       font-weight: 700;
       color: var(--on-bg);
       line-height: 1.2;
@@ -1006,15 +975,16 @@
     /* ==================== ABOUT ==================== */
     .about-content {
       display: grid;
-      grid-template-columns: 60% 1fr;
+      grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
       gap: 3rem;
       align-items: start;
     }
 
     .about-intro {
-      font-size: 1.0625rem;
+      font-size: clamp(0.95rem, 2.5vw, 1.0625rem);
       color: var(--on-surface-variant);
       line-height: 1.7;
+      max-width: 68ch;
     }
 
     .about-intro p {
@@ -1048,7 +1018,7 @@
 
     .stats-card__num {
       font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-      font-size: 2.75rem;
+      font-size: clamp(1.75rem, 5vw, 2.75rem);
       font-weight: 800;
       line-height: 1;
       color: var(--on-bg);
@@ -1069,40 +1039,19 @@
       font-variation-settings: 'wght' 500;
     }
 
-    @media (max-width: 880px) {
-      .about-content {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-      }
-    }
-
     /* ==================== SKILLS & CERTS COMBINED ==================== */
     .skills-and-certs {
       display: grid;
-      grid-template-columns: 60% 40%;
+      grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
       gap: 3rem;
       align-items: start;
-    }
-
-    @media (max-width: 1024px) {
-      .skills-and-certs {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-      }
     }
 
     /* ==================== SKILLS ==================== */
     .skills-wrap {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
       gap: 1.5rem 2rem;
-    }
-
-    @media (max-width: 760px) {
-      .skills-wrap {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-      }
     }
 
     .certs-column {
@@ -1276,7 +1225,7 @@
       padding: clamp(2.5rem, 6vw, 4rem) clamp(1.75rem, 5vw, 3.5rem);
       border: 1px solid var(--outline-variant);
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
       gap: 2.5rem 4rem;
       align-items: center;
       position: relative;
@@ -1436,23 +1385,6 @@
     .contact-card:hover .contact-card__arrow {
       color: var(--primary);
       transform: translateX(3px);
-    }
-
-    @media (max-width: 820px) {
-      .contact-block {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-      }
-
-      .contact-copy {
-        max-width: 100%;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .contact-card__value {
-        font-size: 0.8rem;
-      }
     }
 
     /* ==================== WORK EXPERIENCE ==================== */
@@ -1617,7 +1549,7 @@
     /* ==================== CERTIFICATIONS ==================== */
     .certs-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
       gap: 1.25rem;
       margin-top: 0;
     }
@@ -1741,7 +1673,7 @@
     /* ==================== EDUCATION ==================== */
     .education-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr));
       gap: 1.5rem;
       margin-top: 1.5rem;
     }
@@ -1813,18 +1745,6 @@
     .education-card__skills svg {
       width: 14px;
       height: 14px;
-    }
-
-    @media (max-width: 880px) {
-      .education-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .certs-grid {
-        grid-template-columns: 1fr;
-      }
     }
 
     /* ==================== CUSTOM CURSOR ==================== */
