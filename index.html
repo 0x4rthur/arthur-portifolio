@@ -79,7 +79,28 @@
           <path d="M4 20h16" />
         </svg>
       </a>
+      <button class="nav__burger" id="nav-burger" type="button" aria-label="Open menu" aria-expanded="false"
+        aria-controls="mobile-drawer">
+        <span></span><span></span><span></span>
+      </button>
     </nav>
+  </div>
+
+  <!-- ==================== MOBILE DRAWER ==================== -->
+  <div class="mobile-drawer" id="mobile-drawer" aria-hidden="true">
+    <div class="mobile-drawer__panel" role="dialog" aria-label="Mobile menu" aria-modal="true">
+      <a href="#about" class="mobile-drawer__link" data-i18n="nav_about">About</a>
+      <a href="#projects" class="mobile-drawer__link" data-i18n="nav_projects">Projects</a>
+      <a href="#skills" class="mobile-drawer__link" data-i18n="nav_skills">Skills</a>
+      <a href="#contact" class="mobile-drawer__link" data-i18n="nav_contact">Contact</a>
+      <a href="#" class="mobile-drawer__cta">
+        <span data-i18n="nav_resume">Resume</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+          <path d="M12 4v12m0 0l-4-4m4 4l4-4" />
+          <path d="M4 20h16" />
+        </svg>
+      </a>
+    </div>
   </div>
 
   <main id="top">
