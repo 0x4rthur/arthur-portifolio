@@ -6,6 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#005051" />
   <meta name="color-scheme" content="light" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
 
   <title>Arthur Chequer — Data Scientist & AI Specialist</title>
   <meta name="description" content="Arthur Chequer — Data Scientist and AI Specialist. Portfolio of production machine learning, AI systems, and data projects." />
@@ -40,7 +43,34 @@
   <script src="https://cdn.tailwindcss.com"></script>
 
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="css/styles.css?v=2" />
+  <link rel="stylesheet" href="css/styles.css?v=3" />
+
+  <!-- Critical mobile gutters (inline so they cannot be cached separately from this HTML) -->
+  <style id="critical-mobile-gutters">
+    @media (max-width: 768px) {
+      .container-max {
+        padding-left: max(3rem, env(safe-area-inset-left)) !important;
+        padding-right: max(3rem, env(safe-area-inset-right)) !important;
+      }
+      .c-cursor { display: none !important; }
+    }
+    @media (max-width: 480px) {
+      .container-max {
+        padding-left: max(2.5rem, env(safe-area-inset-left)) !important;
+        padding-right: max(2.5rem, env(safe-area-inset-right)) !important;
+      }
+      .hero__name { font-size: clamp(1.9rem, 9vw, 2.5rem) !important; }
+      .hero__body, .section-lede, .contact-copy { max-width: 36ch !important; }
+      .hero__ctas { flex-direction: column !important; align-items: stretch !important; gap: 0.6rem !important; }
+      .hero__ctas .btn-pill { width: 100% !important; max-width: 280px !important; margin: 0 auto !important; }
+    }
+    @media (max-width: 360px) {
+      .container-max {
+        padding-left: max(2rem, env(safe-area-inset-left)) !important;
+        padding-right: max(2rem, env(safe-area-inset-right)) !important;
+      }
+    }
+  </style>
 
   <!-- Structured data -->
   <script type="application/ld+json">
@@ -784,8 +814,8 @@
       decoding="async" />
   </div>
 
-  <script src="js/main.js?v=2" defer></script>
-  <script src="js/cursor-followers.js?v=2" defer></script>
+  <script src="js/main.js?v=3" defer></script>
+  <script src="js/cursor-followers.js?v=3" defer></script>
 </body>
 
 </html>
