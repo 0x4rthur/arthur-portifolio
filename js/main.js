@@ -702,6 +702,8 @@
 
       /* ===== INTERACTION ===== */
       function onDown(clientX, clientY) {
+        // Reject input when globe is hidden behind the ML/pipeline layer
+        if ((window._blendT || 0) > 0.5) return;
         dragging = true;
         lastX = clientX; lastY = clientY;
         dragDX = 0; dragDY = 0;
@@ -749,6 +751,9 @@
         const _bt = window._blendT || 0;
         const _gA = Math.max(0, 1 - _bt);
         canvas.style.opacity = _gA.toFixed(3);
+        // Disable interaction when globe is mostly invisible so the hidden
+        // canvas doesn't intercept drags/clicks meant for the active layer
+        canvas.style.pointerEvents = _gA > 0.5 ? 'auto' : 'none';
 
         if (_gA > 0.005) {
           autoVelY = lerp(autoVelY, targetAutoVelY, 1 - Math.pow(0.96, dt / 16));
