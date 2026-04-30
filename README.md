@@ -1,67 +1,36 @@
-# Arthur Chequer — Portfolio
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-Personal portfolio site for Arthur Chequer (Data Scientist & AI Specialist).
-Single-page, static, bilingual (EN / PT-BR), responsive.
+## Getting Started
 
-**Live:** https://arthurchequer.com/
-
-## Stack
-
-- HTML5 (semantic, accessible)
-- CSS3 (custom design system with CSS variables)
-- Tailwind CSS (via CDN — pin a compiled build before production)
-- Vanilla JavaScript (no framework, no build step)
-- SF Pro Display (Apple) via CDN fonts
-
-## Project structure
-
-```
-.
-├── index.html              # Entry point
-├── css/
-│   └── styles.css          # Main stylesheet (design tokens, components, sections)
-├── js/
-│   ├── main.js             # Navigation, reveal, i18n, interactions
-│   └── cursor-followers.js # Cursor-following tooltips and certificate preview
-├── images/
-│   ├── certs/              # Certificate images
-│   ├── logos/              # Company / school logos
-│   └── cursor/             # Custom cursor asset
-├── README.md
-├── LICENSE
-└── .gitignore
-```
-
-## Run locally
-
-No build step. Any static server works:
+First, run the development server:
 
 ```bash
-# Python
-python -m http.server 8080
-
-# Node
-npx serve .
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
 
-Then open http://localhost:8080.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## Deploy
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-### GitHub Pages
-Settings → Pages → Source: `main` / root. The site publishes at the URL above.
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-### Vercel / Netlify
-Connect the repo; no build command needed; output directory `.`.
+## Learn More
 
-## Recommended follow-ups
+To learn more about Next.js, take a look at the following resources:
 
-- Replace Tailwind CDN with a compiled build (`npx tailwindcss -o css/tailwind.css --minify`) to cut ~3 MB of unused CSS in production.
-- Convert PNGs under `images/certs/` to WebP/AVIF (current `dale_carnegie_physical.png` alone is ~4.5 MB).
-- Shrink `images/cursor/cursor.png` (currently ~1.8 MB — a cursor should be under 10 KB at 32×32).
-- Add an Open Graph preview image at `images/og-cover.png` (1200×630) and reference it in the `<meta property="og:image">` tag.
-- Wire a real `resume.pdf` to the "Resume" nav button.
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-## License
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-MIT — see [LICENSE](LICENSE).
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
