@@ -16,7 +16,7 @@ export function Nav() {
     <nav className="sticky top-4 z-50 mx-auto mt-4 max-w-[1200px] px-6">
       <GlassSurface
         width="100%"
-        height={60}
+        height={100}
         borderRadius={999}
         displace={6}
         distortionScale={-180}
@@ -28,8 +28,8 @@ export function Nav() {
         mixBlendMode="screen"
         className="!justify-stretch shadow-[0_8px_24px_rgba(17,18,19,0.06),0_2px_6px_rgba(17,18,19,0.04)]"
       >
-        <div className="flex w-full items-center gap-7 px-[18px]">
-          <div className="font-mono text-[18px] font-bold tracking-[-0.02em] px-[10px] py-1 text-ink">
+        <div className="flex w-full items-center gap-7 px-[24px] py-4">
+          <div className="font-mono text-[20px] font-bold tracking-[-0.02em] px-[10px] text-ink">
             [<span className="font-normal text-ink-mute">a</span>c
             <span className="font-normal text-ink-mute">q</span>]
           </div>
